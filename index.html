@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Maker - Muhamad Ikhsan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'cv-dark': '#111827',
+              'cv-charcoal': '#374151',
+            },
+            fontFamily: {
+              lato: ['Lato', 'sans-serif'],
+              playfair: ['Playfair Display', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body class="py-4 md:py-10 font-lato bg-gray-200" x-data="cvMaker()">
+
+    <div class="w-full max-w-[210mm] mx-auto bg-white p-4 rounded-lg shadow-md mb-6 flex flex-col gap-4 no-print border-l-4 border-cv-dark px-4 sm:px-6">
+        <!-- BARIS ATAS: INPUT NAMA FILE PDF (LEBAR & TIDAK TERPOTONG) DAN TOMBOL AKSI -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 border-b border-gray-100 pb-3.5">
+            <div class="flex-1 w-full min-w-0">
+                <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-signature text-cv-dark"></i> NAMA FILE PDF SAAT DIUNDUH:
+                </label>
+                <div class="relative w-full">
+                    <input type="text" x-model="pdfFileName" @input="updateDocumentTitle" 
+                           class="w-full text-xs sm:text-sm font-semibold pl-3 pr-12 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cv-dark focus:border-cv-dark focus:outline-none bg-gray-50 text-gray-800 transition shadow-sm"
+                           placeholder="Nama file PDF...">
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400 select-none pointer-events-none">.pdf</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 w-full md:w-auto shrink-0 justify-end">
+                <label class="bg-gray-100 hover:bg-gray-200 text-cv-dark border border-gray-300 px-3.5 py-2 rounded-md shadow-sm cursor-pointer transition font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 flex-1 md:flex-none text-center active:scale-95">
+                    <i class="fa-solid fa-camera text-gray-600"></i> Foto
+                    <input type="file" accept="image/*" class="hidden" @change="uploadPhoto">
+                </label>
+                
+                <button @click="downloadPDF" type="button" class="bg-cv-dark hover:bg-black text-white px-4 py-2 rounded-md shadow transition font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 flex-1 md:flex-none active:scale-95">
+                    <i class="fa-solid fa-file-pdf"></i> Simpan PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="flex border-b border-gray-200 overflow-x-auto whitespace-nowrap scroll-smooth pb-0.5">
+            <button 
+                @click="switchTab('gerobak')" 
+                :class="activeTab === 'gerobak' ? 'border-cv-dark text-cv-dark border-b-2 font-bold' : 'text-gray-500 hover:text-cv-dark font-medium'"
+                class="py-2 px-3 sm:px-6 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-store"></i> Penjaga Gerobak
+            </button>
+            <button 
+                @click="switchTab('kasir')" 
+                :class="activeTab === 'kasir' ? 'border-cv-dark text-cv-dark border-b-2 font-bold' : 'text-gray-500 hover:text-cv-dark font-medium'"
+                class="py-2 px-3 sm:px-6 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-cash-register"></i> Kasir / Pramuniaga
+            </button>
+            <button 
+                @click="switchTab('bakery')" 
+                :class="activeTab === 'bakery' ? 'border-cv-dark text-cv-dark border-b-2 font-bold' : 'text-gray-500 hover:text-cv-dark font-medium'"
+                class="py-2 px-3 sm:px-6 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-bread-slice"></i> Helper Bakery / Roti
+            </button>
+            <button 
+                @click="switchTab('laundry')" 
+                :class="activeTab === 'laundry' ? 'border-cv-dark text-cv-dark border-b-2 font-bold' : 'text-gray-500 hover:text-cv-dark font-medium'"
+                class="py-2 px-3 sm:px-6 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-shirt"></i> Staf Laundry
+            </button>
+            <button 
+                @click="switchTab('fullstack')" 
+                :class="activeTab === 'fullstack' ? 'border-cv-dark text-cv-dark border-b-2 font-bold' : 'text-gray-500 hover:text-cv-dark font-medium'"
+                class="py-2 px-3 sm:px-6 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-code"></i> Fullstack Developer
+            </button>
+            <button 
+                @click="switchTab('gudang')" 
+                :class="activeTab === 'gudang' ? 'border-cv-dark text-cv-dark border-b-2 font-bold' : 'text-gray-500 hover:text-cv-dark font-medium'"
+                class="py-2 px-3 sm:px-6 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 shrink-0">
+                <i class="fa-solid fa-boxes-stacked"></i> Staff / Admin Gudang
+            </button>
+        </div>
+    </div>
+
+    <!-- AREA UTAMA PENAMPIL TEMPLATE CV -->
+    <div class="w-full flex justify-center px-2 sm:px-4">
+        <div class="cv-wrapper flex flex-col md:flex-row relative w-full max-w-[210mm] bg-white shadow-lg" x-html="currentHtml">
+            <!-- Konten komponen akan dimuat di sini secara otomatis dari templates/ -->
+        </div>
+    </div>
+
+</body>
+</html>

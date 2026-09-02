@@ -1,0 +1,151 @@
+/* Konfigurasi kustom Tailwind melalui CSS variabel/utilitas */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --font-lato: 'Lato', sans-serif;
+        --font-playfair: 'Playfair Display', serif;
+        --color-cv-charcoal: #374151;
+        --color-cv-dark: #111827;
+    }
+}
+
+/* ========================================================
+   CUSTOM SCROLLBAR (Clean, Modern, Slim / Ramping)
+   ======================================================== */
+/* Standar W3C (Firefox) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+/* WebKit / Chromium (Chrome, Edge, Opera, Safari) */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #64748b;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+body {
+    background-color: #e5e7eb;
+}
+
+/* Area kerja A4 untuk tampilan Web Desktop */
+.cv-wrapper {
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya Edit */
+[contenteditable="true"] {
+    outline: none;
+    transition: all 0.2s;
+    border-radius: 2px;
+}
+[contenteditable="true"]:hover, 
+[contenteditable="true"]:focus {
+    background-color: rgba(226, 232, 240, 0.7);
+    box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.4);
+    cursor: text;
+}
+
+/* Style Link Elegan Hanya Pada Teks (Tanpa Ikon) */
+.cv-link-elegan {
+    color: #1e293b !important;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #94a3b8;
+    transition: all 0.15s ease-in-out;
+}
+.cv-link-elegan:hover {
+    text-decoration-color: #0f172a;
+}
+
+/* ----- KONFIGURASI NATIVE PDF ENGINE (A4 EXACT PRINT) ----- */
+@page {
+    size: A4 portrait;
+    margin: 0mm;
+}
+
+@media print {
+    html, body {
+        width: 210mm !important;
+        height: 297mm !important;
+        background-color: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .no-print { 
+        display: none !important; 
+    }
+    
+    .cv-wrapper { 
+        box-shadow: none !important; 
+        margin: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: row !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .cv-left-col {
+        width: 35% !important;
+    }
+
+    .cv-right-col {
+        width: 65% !important;
+    }
+
+    [contenteditable="true"] {
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .cv-link-elegan {
+        color: #1e293b !important;
+        text-decoration: underline !important;
+        text-underline-offset: 3px !important;
+        text-decoration-thickness: 1px !important;
+        text-decoration-color: #64748b !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}

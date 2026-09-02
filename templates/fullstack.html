@@ -1,0 +1,142 @@
+<div class="cv-left-col w-full md:w-[35%] bg-[#f8fafc] flex flex-col py-6 md:py-10 px-6 md:px-8 border-b md:border-b-0 md:border-r border-gray-200">
+    <div class="mb-8 md:mb-10 flex justify-center">
+        <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-[4px] border-cv-dark bg-white flex items-center justify-center relative shadow-sm">
+            <template x-if="photoSrc">
+                <img :src="photoSrc" alt="Profile" class="w-full h-full object-cover">
+            </template>
+            <template x-if="!photoSrc">
+                <i class="fa-solid fa-user text-4xl md:text-5xl text-gray-300"></i>
+            </template>
+        </div>
+    </div>
+    <div class="mb-6 md:mb-8">
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">CONTACT</h3>
+        <ul class="text-[12px] text-cv-charcoal space-y-3 leading-tight">
+            <li class="flex items-start">
+                <i class="fa-solid fa-envelope text-cv-dark w-5 text-center text-[12px] mt-0.5 shrink-0"></i> 
+                <a href="mailto:muhamadikhsan.dev@gmail.com" target="_blank" class="flex-1 ml-1 break-all flex flex-wrap items-center gap-1 group">
+                    <span class="cv-link-elegan break-all" contenteditable="true">muhamadikhsan.dev@gmail.com</span>
+                </a>
+            </li>
+            <li class="flex items-center">
+                <i class="fa-solid fa-house text-cv-dark w-5 text-center text-[12px] shrink-0"></i> 
+                <span contenteditable="true" class="flex-1 ml-1">Bogor, Jawa Barat</span>
+            </li>
+            <li class="flex items-start">
+                <i class="fa-solid fa-phone text-cv-dark w-5 text-center text-[12px] mt-0.5 shrink-0"></i> 
+                <a href="https://wa.me/628989379116" target="_blank" class="flex-1 ml-1 inline-flex items-center gap-1 group">
+                    <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
+                </a>
+            </li>
+            <li class="flex items-center">
+                <i class="fa-solid fa-globe text-cv-dark w-5 text-center text-[12px] shrink-0"></i> 
+                <a href="https://muhamadikhsan-dev.vercel.app" target="_blank" class="flex-1 ml-1 break-all flex flex-wrap items-center gap-1 group">
+                    <span class="cv-link-elegan break-all" contenteditable="true">muhamadikhsan-dev.vercel.app</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">SKILLS</h3>
+        <div contenteditable="true" class="text-[12px] text-cv-charcoal space-y-3">
+            <div>
+                <h4 class="font-bold text-cv-dark text-[11px] uppercase tracking-wider mb-1">Frontend Development</h4>
+                <p class="leading-relaxed">Next.js, React.js, TypeScript, JavaScript, Tailwind CSS, Flutter</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-cv-dark text-[11px] uppercase tracking-wider mb-1">Backend & Database</h4>
+                <p class="leading-relaxed">Laravel, FastAPI, PHP, Python, REST API, PostgreSQL, MySQL</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-cv-dark text-[11px] uppercase tracking-wider mb-1">Tools & Mobile</h4>
+                <p class="leading-relaxed">Git, Dart</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-cv-dark text-[11px] uppercase tracking-wider mb-1">Soft Skills</h4>
+                <ul class="list-disc pl-4 space-y-0.5 marker:text-cv-dark">
+                    <li>Problem Solving</li>
+                    <li>Analytical Thinking</li>
+                    <li>Adaptability</li>
+                    <li>Time Management</li>
+                    <li>Effective Communication</li>
+                    <li>Team Collaboration</li>
+                    <li>Continuous Learning</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cv-right-col w-full md:w-[65%] py-6 md:py-12 px-6 md:px-10 flex flex-col bg-white">
+    <div class="mb-8 md:mb-10">
+        <h1 contenteditable="true" class="font-playfair font-semibold text-3xl md:text-4xl uppercase text-cv-dark tracking-wide mb-1 leading-tight md:leading-none">MUHAMAD IKHSAN</h1>
+        <h2 contenteditable="true" class="font-lato font-bold text-gray-500 text-sm tracking-[0.2em] uppercase leading-none mt-2">FULLSTACK DEVELOPER</h2>
+    </div>
+    <div class="mb-8 md:mb-10">
+        <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">SUMMARY</h3>
+        <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
+            Fullstack Developer dengan pengalaman membangun aplikasi web dan mobile menggunakan Laravel, Next.js, Flutter, MySQL, PostgreSQL, dan REST API. Memiliki pengalaman magang sebagai Fullstack Developer serta mengembangkan beberapa project seperti CRM, POS, Learning Management System, dan Portfolio Website.
+        </div>
+    </div>
+    <div class="mb-8 md:mb-10">
+        <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">WORK EXPERIENCE</h3>
+        <div contenteditable="true" class="text-cv-charcoal space-y-4">
+            <div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                    <h4 class="font-lato font-bold text-[14px] text-cv-dark">FULLSTACK PROJECT | CLIENTRA CRM SYSTEM</h4>
+                    <span class="text-[12px] font-semibold text-gray-500">Juni 2026 - Sekarang</span>
+                </div>
+                <div class="text-[12px] italic text-gray-600 mb-1">Next.js, FastAPI, PostgreSQL</div>
+                <ul class="text-[13px] list-disc pl-4 space-y-1 marker:text-cv-dark leading-relaxed">
+                    <li>Mengembangkan sistem CRM untuk pengelolaan pelanggan dan aktivitas bisnis.</li>
+                    <li>Membangun REST API menggunakan FastAPI dan PostgreSQL.</li>
+                </ul>
+            </div>
+            <div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                    <h4 class="font-lato font-bold text-[14px] text-cv-dark">IT INTERN / FULL STACK DEVELOPER</h4>
+                    <span class="text-[12px] font-semibold text-gray-500">Juli 2025 - Desember 2025</span>
+                </div>
+                <div class="text-[12px] text-gray-700 font-medium">Dymo Group . Jakarta Selatan, DKI Jakarta</div>
+                <div class="text-[12px] italic text-gray-600 mb-1">Laravel, MySQL, JavaScript, Tailwind CSS</div>
+                <ul class="text-[13px] list-disc pl-4 space-y-1 marker:text-cv-dark leading-relaxed">
+                    <li>Mengembangkan dan memelihara Learning Management System (LMS).</li>
+                    <li>Membangun fitur CRUD, dashboard, dan pengelolaan data pembelajaran.</li>
+                </ul>
+            </div>
+            <div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                    <h4 class="font-lato font-bold text-[14px] text-cv-dark">PERSONAL PROJECT | KASWIRA POINT OF SALE (POS)</h4>
+                    <span class="text-[12px] font-semibold text-gray-500">Januari 2025 - Juni 2025</span>
+                </div>
+                <div class="text-[12px] italic text-gray-600 mb-1">Laravel, MySQL, JavaScript, Tailwind CSS</div>
+                <ul class="text-[13px] list-disc pl-4 space-y-1 marker:text-cv-dark leading-relaxed">
+                    <li>Mengembangkan sistem Point of Sale (POS) untuk transaksi penjualan.</li>
+                    <li>Membangun fitur manajemen produk dan laporan penjualan.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mb-8 md:mb-10">
+        <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">EDUCATION</h3>
+        <div contenteditable="true" class="text-cv-charcoal">
+            <div>
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                    <h4 class="font-lato font-bold text-[14px] text-cv-dark">PENGEMBANGAN PERANGKAT LUNAK DAN GIM (PPLG)</h4>
+                    <span class="text-[12px] font-semibold text-gray-500">Juli 2023 - Mei 2026</span>
+                </div>
+                <div class="text-[13px] mt-0.5 text-gray-700">SMKN 1 CIOMAS . Bogor, Jawa Barat</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">COURSES AND CERTIFICATES</h3>
+        <div contenteditable="true" class="text-cv-charcoal">
+            <ul class="text-[13px] space-y-1.5 list-disc pl-4 marker:text-cv-dark">
+                <li><strong>API INTRODUCTION</strong> — MySkill . Online <span class="text-[12px] text-gray-500">(Juni 2025)</span></li>
+                <li><strong>PKL DIVISI IT</strong> — Dymo Group . Jakarta Selatan <span class="text-[12px] text-gray-500">(Juli 2025)</span></li>
+                <li><strong>BACKEND INTRODUCTION</strong> — MySkill . Online <span class="text-[12px] text-gray-500">(Juni 2025)</span></li>
+                <li><strong>INTRODUCTION REACT</strong> — MySkill . Online <span class="text-[12px] text-gray-500">(Juni 2025)</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
