@@ -1,36 +1,44 @@
-<div class="cv-left-col w-full md:w-[35%] bg-[#f8fafc] flex flex-col py-6 md:py-10 px-6 md:px-8 border-b md:border-b-0 md:border-r border-gray-200">
+<script setup>
+import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+
+defineProps({
+  photoSrc: {
+    type: String,
+    default: null
+  }
+});
+</script>
+
+<template>
+  <div class="cv-left-col w-full md:w-[35%] bg-[#f8fafc] flex flex-col py-6 md:py-10 px-6 md:px-8 border-b md:border-b-0 md:border-r border-gray-200">
     <div class="mb-8 md:mb-10 flex justify-center">
         <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-[4px] border-cv-dark bg-white flex items-center justify-center relative shadow-sm">
-            <template x-if="photoSrc">
-                <img :src="photoSrc" alt="Profile" class="w-full h-full object-cover">
-            </template>
-            <template x-if="!photoSrc">
-                <i class="fa-solid fa-user text-4xl md:text-5xl text-gray-300"></i>
-            </template>
-        </div>
+        <img v-if="photoSrc" :src="photoSrc" alt="Profile" class="w-full h-full object-cover">
+        <User v-else class="w-12 h-12 md:w-16 md:h-16 text-gray-300" />
+      </div>
     </div>
     <div class="mb-6 md:mb-8">
         <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KONTAK</h3>
         <ul class="text-[12px] text-cv-charcoal space-y-3 leading-tight">
             <li class="flex items-start">
-                <i class="fa-solid fa-envelope text-cv-dark w-5 text-center text-[12px] mt-0.5 shrink-0"></i> 
-                <a href="mailto:muhamadikhsan.dev@gmail.com" target="_blank" class="flex-1 ml-1 break-all flex flex-wrap items-center gap-1 group">
+                <Mail class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /> 
+                <a href="mailto:muhamadikhsan.dev@gmail.com" target="_blank" class="flex-1 ml-1.5 break-all flex flex-wrap items-center gap-1 group">
                     <span class="cv-link-elegan break-all" contenteditable="true">muhamadikhsan.dev@gmail.com</span>
                 </a>
             </li>
             <li class="flex items-center">
-                <i class="fa-solid fa-location-dot text-cv-dark w-5 text-center text-[12px] shrink-0"></i> 
-                <span contenteditable="true" class="flex-1 ml-1">Kab. Bogor, Jawa Barat</span>
+                <MapPin class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
+                <span contenteditable="true" class="flex-1 ml-1.5">Kab. Bogor, Jawa Barat</span>
             </li>
             <li class="flex items-start">
-                <i class="fa-solid fa-phone text-cv-dark w-5 text-center text-[12px] mt-0.5 shrink-0"></i> 
-                <a href="https://wa.me/628989379116" target="_blank" class="flex-1 ml-1 inline-flex items-center gap-1 group">
+                <Phone class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /> 
+                <a href="https://wa.me/628989379116" target="_blank" class="flex-1 ml-1.5 inline-flex items-center gap-1 group">
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
             <li class="flex items-center">
-                <i class="fa-solid fa-id-card text-cv-dark w-5 text-center text-[12px] shrink-0"></i> 
-                <span contenteditable="true" class="flex-1 ml-1">Usia: 18 Tahun (Laki-laki)</span>
+                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
+                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
             </li>
         </ul>
     </div>
@@ -55,16 +63,16 @@
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">PROFIL RINGKAS</h3>
         <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
-            Pemuda berusia 18 tahun lulusan SMK PPLG yang berenergi positif, disiplin, teliti, dan memiliki motivasi besar untuk memulai karir di bidang produksi roti (*bakery*). Walaupun belum memiliki pengalaman kerja formal di dapur roti, saya memiliki kemauan belajar yang sangat tinggi (*fast learner*), stamina fisik prima untuk bekerja aktif dan berdiri lama, serta terbiasa dengan perhitungan angka yang presisi. Siap dibimbing dari nol mengenai standar resep, persiapan adonan, pemantauan oven, hingga pemeliharaan kebersihan dapur demi menjaga mutu dan cita rasa produk roti.
+            Pemuda berusia 18 tahun lulusan SMK PPLG yang berenergi positif, disiplin, teliti, dan memiliki motivasi besar untuk memulai karir di bidang produksi roti bakery. Walaupun belum memiliki pengalaman kerja formal di dapur roti, saya memiliki kemauan belajar yang sangat tinggi (fast learner), stamina fisik prima untuk bekerja aktif dan berdiri lama, serta terbiasa dengan perhitungan angka yang presisi. Siap dibimbing dari nol mengenai standar resep, persiapan adonan, pemantauan oven, hingga pemeliharaan kebersihan dapur demi menjaga mutu dan cita rasa produk roti.
         </div>
     </div>
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">MINAT & KESIAPAN KERJA</h3>
         <div contenteditable="true" class="text-cv-charcoal">
             <ul class="text-[13px] list-disc pl-4 space-y-2.5 marker:text-cv-dark leading-relaxed">
-                <li><strong>Kemauan Belajar dari Dasar:</strong> Sangat antusias mempelajari alur produksi roti secara menyeluruh—mulai dari penyiapan bahan (*mise en place*), pengadukan adonan, proses fermentasi/*proofing*, hingga teknik pemanggangan sesuai SOP toko.</li>
+                <li><strong>Kemauan Belajar dari Dasar:</strong> Sangat antusias mempelajari alur produksi roti secara menyeluruh—mulai dari penyiapan bahan (mise en place), pengadukan adonan, proses fermentasi/proofing, hingga teknik pemanggangan sesuai SOP toko.</li>
                 <li><strong>Ketelitian Takaran & Resep:</strong> Memiliki ketelitian tinggi dalam menimbang dan menakar bahan baku (tepung, ragi, mentega, gula, air) sesuai takaran gramasi agar adonan mengembang sempurna dan konsisten.</li>
-                <li><strong>Kebersihan & Sanitasi Area Dapur:</strong> Berkomitmen menerapkan standar kebersihan diri (*personal hygiene*), rutin mencuci dan membersihkan loyang, wadah adonan, meja kerja, serta mesin oven agar steril dan higienis.</li>
+                <li><strong>Kebersihan & Sanitasi Area Dapur:</strong> Berkomitmen menerapkan standar kebersihan diri (personal hygiene), rutin mencuci dan membersihkan loyang, wadah adonan, meja kerja, serta mesin oven agar steril dan higienis.</li>
                 <li><strong>Ketahanan Fisik & Kesiapan Shift Pagi:</strong> Berstamina fisik bugar untuk mengangkat bahan baku, memindahkan rak loyang, serta terbiasa bangun pagi untuk bekerja pada shift subuh/pagi secara disiplin.</li>
             </ul>
         </div>
@@ -80,3 +88,4 @@
         </div>
     </div>
 </div>
+</template>

@@ -1,36 +1,44 @@
-<div class="cv-left-col w-full md:w-[35%] bg-[#f8fafc] flex flex-col py-6 md:py-10 px-6 md:px-8 border-b md:border-b-0 md:border-r border-gray-200">
+<script setup>
+import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+
+defineProps({
+  photoSrc: {
+    type: String,
+    default: null
+  }
+});
+</script>
+
+<template>
+  <div class="cv-left-col w-full md:w-[35%] bg-[#f8fafc] flex flex-col py-6 md:py-10 px-6 md:px-8 border-b md:border-b-0 md:border-r border-gray-200">
     <div class="mb-8 md:mb-10 flex justify-center">
         <div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-[4px] border-cv-dark bg-white flex items-center justify-center relative shadow-sm">
-            <template x-if="photoSrc">
-                <img :src="photoSrc" alt="Profile" class="w-full h-full object-cover">
-            </template>
-            <template x-if="!photoSrc">
-                <i class="fa-solid fa-user text-4xl md:text-5xl text-gray-300"></i>
-            </template>
-        </div>
+        <img v-if="photoSrc" :src="photoSrc" alt="Profile" class="w-full h-full object-cover">
+        <User v-else class="w-12 h-12 md:w-16 md:h-16 text-gray-300" />
+      </div>
     </div>
     <div class="mb-6 md:mb-8">
         <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KONTAK</h3>
         <ul class="text-[12px] text-cv-charcoal space-y-3 leading-tight">
             <li class="flex items-start">
-                <i class="fa-solid fa-envelope text-cv-dark w-5 text-center text-[12px] mt-0.5 shrink-0"></i> 
-                <a href="mailto:muhamadikhsan.dev@gmail.com" target="_blank" class="flex-1 ml-1 break-all flex flex-wrap items-center gap-1 group">
+                <Mail class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /> 
+                <a href="mailto:muhamadikhsan.dev@gmail.com" target="_blank" class="flex-1 ml-1.5 break-all flex flex-wrap items-center gap-1 group">
                     <span class="cv-link-elegan break-all" contenteditable="true">muhamadikhsan.dev@gmail.com</span>
                 </a>
             </li>
             <li class="flex items-center">
-                <i class="fa-solid fa-location-dot text-cv-dark w-5 text-center text-[12px] shrink-0"></i> 
-                <span contenteditable="true" class="flex-1 ml-1">Kab. Bogor, Jawa Barat</span>
+                <MapPin class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
+                <span contenteditable="true" class="flex-1 ml-1.5">Kab. Bogor, Jawa Barat</span>
             </li>
             <li class="flex items-start">
-                <i class="fa-solid fa-phone text-cv-dark w-5 text-center text-[12px] mt-0.5 shrink-0"></i> 
-                <a href="https://wa.me/628989379116" target="_blank" class="flex-1 ml-1 inline-flex items-center gap-1 group">
+                <Phone class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /> 
+                <a href="https://wa.me/628989379116" target="_blank" class="flex-1 ml-1.5 inline-flex items-center gap-1 group">
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
             <li class="flex items-center">
-                <i class="fa-solid fa-id-card text-cv-dark w-5 text-center text-[12px] shrink-0"></i> 
-                <span contenteditable="true" class="flex-1 ml-1">Usia: 18 Tahun (Laki-laki)</span>
+                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
+                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
             </li>
         </ul>
     </div>
@@ -80,3 +88,4 @@
         </div>
     </div>
 </div>
+</template>

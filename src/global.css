@@ -1,15 +1,13 @@
-/* Konfigurasi kustom Tailwind melalui CSS variabel/utilitas */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind CSS v4 */
+@import "tailwindcss";
 
-@layer base {
-    :root {
-        --font-lato: 'Lato', sans-serif;
-        --font-playfair: 'Playfair Display', serif;
-        --color-cv-charcoal: #374151;
-        --color-cv-dark: #111827;
-    }
+@theme {
+    --font-lato: 'Lato', sans-serif;
+    --font-playfair: 'Playfair Display', serif;
+    --color-cv-dark: #111827;
+    --color-cv-charcoal: #374151;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-family-playfair: 'Playfair Display', serif;
 }
 
 /* ========================================================

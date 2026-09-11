@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+*.local
+
+# Abaikan semua file .bat kecuali skrip utama
+*.bat
+!jalankan-server.bat
