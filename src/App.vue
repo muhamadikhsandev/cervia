@@ -11,7 +11,8 @@ import {
   Code2, 
   Boxes, 
   Keyboard, 
-  Handshake 
+  Handshake,
+  Factory
 } from 'lucide-vue-next';
 
 import Gerobak from './components/templates/Gerobak.vue';
@@ -22,6 +23,7 @@ import Fullstack from './components/templates/Fullstack.vue';
 import Gudang from './components/templates/Gudang.vue';
 import Admin from './components/templates/Admin.vue';
 import Sales from './components/templates/Sales.vue';
+import HelperProduksi from './components/templates/HelperProduksi.vue';
 
 import { compressPhoto } from './utils/photo.js';
 
@@ -34,6 +36,7 @@ const tabs = [
   { id: 'gudang', label: 'Staff / Admin Gudang', icon: Boxes, defaultName: 'CV_Muhamad_Ikhsan_Staff_Gudang', component: Gudang },
   { id: 'admin', label: 'Admin / Data Entry', icon: Keyboard, defaultName: 'CV_Muhamad_Ikhsan_Admin_Data_Entry', component: Admin },
   { id: 'sales', label: 'Sales / Marketing', icon: Handshake, defaultName: 'CV_Muhamad_Ikhsan_Sales_Representative', component: Sales },
+  { id: 'helper-produksi', label: 'Helper Produksi', icon: Factory, defaultName: 'CV_Muhamad_Ikhsan_Helper_Produksi', component: HelperProduksi },
 ];
 
 const activeTab = ref('gerobak');
