@@ -73,7 +73,17 @@ function clearTemplateSearch() {
 
 function selectTemplate(tabId) {
   switchTab(tabId);
+  closeMobileSidebar();
+}
+
+function openMobileSidebar() {
+  mobileSidebarOpen.value = true;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileSidebar() {
   mobileSidebarOpen.value = false;
+  document.body.style.overflow = '';
 }
 
 const activeComponent = computed(() => {
@@ -123,7 +133,7 @@ document.title = pdfFileName.value;
 <template>
   <div class="app-shell pt-0 pb-0 lg:pt-4 lg:pb-6 font-lato min-h-screen bg-gray-200 overflow-x-hidden">
     <div class="app-layout w-full max-w-[1400px] mx-auto px-0 lg:px-4 flex flex-col lg:flex-row gap-0 lg:gap-6 items-start">
-    <div v-if="mobileSidebarOpen" @click="mobileSidebarOpen = false" class="fixed inset-0 z-40 bg-black/40 lg:hidden no-print"></div>
+    <div v-if="mobileSidebarOpen" @click="closeMobileSidebar" class="fixed inset-0 z-40 bg-black/40 lg:hidden no-print"></div>
     <aside
       class="fixed inset-y-0 left-0 z-50 w-[min(86vw,320px)] overflow-y-auto transform -translate-x-full transition-transform duration-300 lg:static lg:inset-auto lg:z-auto lg:translate-x-0 lg:w-80 lg:min-h-[calc(100vh-2rem)] lg:flex-none lg:sticky lg:top-0 lg:overflow-visible bg-white p-5 rounded-r-xl lg:rounded-xl shadow-xl lg:shadow-md flex flex-col gap-4 no-print border-l-4 border-cv-dark"
       :class="{ 'translate-x-0': mobileSidebarOpen }"
@@ -131,7 +141,7 @@ document.title = pdfFileName.value;
       <div class="flex items-center gap-2 border-b border-gray-100 pb-4">
         <div class="w-9 h-9 rounded-lg bg-cv-dark text-white flex items-center justify-center"><FilePen class="w-5 h-5" /></div>
         <div class="flex-1"><div class="text-lg font-black tracking-tight text-cv-dark">Cervia</div><div class="text-[10px] text-gray-500 uppercase tracking-widest">CV Maker</div></div>
-        <button type="button" @click="mobileSidebarOpen = false" class="lg:hidden p-1.5 rounded-md text-gray-500 hover:bg-gray-100 hover:text-cv-dark" aria-label="Tutup menu"><X class="w-5 h-5" /></button>
+        <button type="button" @click="closeMobileSidebar" class="lg:hidden p-1.5 rounded-md text-gray-500 hover:bg-gray-100 hover:text-cv-dark" aria-label="Tutup menu"><X class="w-5 h-5" /></button>
       </div>
       <!-- BARIS ATAS: INPUT NAMA FILE PDF DAN TOMBOL AKSI -->
       <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 border-b border-gray-100 pb-3.5">
@@ -192,7 +202,7 @@ document.title = pdfFileName.value;
     </main>
     </div>
 
-    <button type="button" @click="mobileSidebarOpen = true" class="lg:hidden fixed top-4 left-4 z-30 w-11 h-11 rounded-xl bg-cv-dark text-white shadow-lg flex items-center justify-center active:scale-95 transition no-print" aria-label="Buka menu Cervia">
+    <button type="button" @click="openMobileSidebar" class="lg:hidden fixed top-4 left-4 z-30 w-11 h-11 rounded-xl bg-cv-dark text-white shadow-lg flex items-center justify-center active:scale-95 transition no-print" aria-label="Buka menu Cervia">
       <Menu class="w-5 h-5" />
     </button>
   </div>
