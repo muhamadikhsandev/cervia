@@ -12,7 +12,10 @@ import {
   Boxes, 
   Keyboard, 
   Handshake,
-  Factory
+  Factory,
+  Utensils,
+  Search,
+  X
 } from 'lucide-vue-next';
 
 import Gerobak from './components/templates/Gerobak.vue';
@@ -24,6 +27,7 @@ import Gudang from './components/templates/Gudang.vue';
 import Admin from './components/templates/Admin.vue';
 import Sales from './components/templates/Sales.vue';
 import HelperProduksi from './components/templates/HelperProduksi.vue';
+import StoreCrew from './components/templates/StoreCrew.vue';
 
 import { compressPhoto } from './utils/photo.js';
 
@@ -37,11 +41,23 @@ const tabs = [
   { id: 'admin', label: 'Admin / Data Entry', icon: Keyboard, defaultName: 'CV_Muhamad_Ikhsan_Admin_Data_Entry', component: Admin },
   { id: 'sales', label: 'Sales / Marketing', icon: Handshake, defaultName: 'CV_Muhamad_Ikhsan_Sales_Representative', component: Sales },
   { id: 'helper-produksi', label: 'Helper Produksi', icon: Factory, defaultName: 'CV_Muhamad_Ikhsan_Helper_Produksi', component: HelperProduksi },
+  { id: 'store-crew', label: 'Store Crew F&B', icon: Utensils, defaultName: 'CV_Fresh_Graduate_Store_Crew_FnB', component: StoreCrew },
 ];
 
 const activeTab = ref('gerobak');
+const templateSearch = ref('');
 const photoSrc = ref(null);
 const pdfFileName = ref('CV_Muhamad_Ikhsan_Penjaga_Gerobak');
+
+const filteredTabs = computed(() => {
+  const query = templateSearch.value.trim().toLowerCase();
+  if (!query) return tabs;
+  return tabs.filter(tab => tab.label.toLowerCase().includes(query));
+});
+
+function clearTemplateSearch() {
+  templateSearch.value = '';
+}
 
 const activeComponent = computed(() => {
   const current = tabs.find(t => t.id === activeTab.value);
@@ -124,18 +140,41 @@ document.title = pdfFileName.value;
         </div>
       </div>
 
-      <!-- TAB PILIHAN TEMPLATE PROFESI -->
-      <div class="flex border-b border-gray-200 overflow-x-auto whitespace-nowrap scroll-smooth pb-0.5">
+      <!-- PILIHAN TEMPLATE PROFESI -->
+      <div class="flex flex-col gap-3">
+        <div class="relative w-full md:max-w-sm">
+          <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+          <input
+            v-model="templateSearch"
+            type="search"
+            placeholder="Cari template CV..."
+            aria-label="Cari template CV"
+            class="w-full text-sm pl-9 pr-9 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cv-dark focus:border-cv-dark focus:outline-none bg-gray-50 text-gray-800 transition shadow-sm"
+          >
+          <button
+            v-if="templateSearch"
+            @click="clearTemplateSearch"
+            type="button"
+            aria-label="Hapus pencarian"
+            class="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-cv-dark"
+          >
+            <X class="w-4 h-4" />
+          </button>
+        </div>
+
+        <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-3">
         <button 
-          v-for="tab in tabs" 
+          v-for="tab in filteredTabs" 
           :key="tab.id"
           @click="switchTab(tab.id)" 
-          :class="activeTab === tab.id ? 'border-cv-dark text-cv-dark border-b-2 font-bold' : 'text-gray-500 hover:text-cv-dark font-medium'"
-          class="py-2 px-3 sm:px-6 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 shrink-0"
+          :class="activeTab === tab.id ? 'bg-cv-dark text-white border-cv-dark font-bold shadow-sm' : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-gray-400 hover:text-cv-dark font-medium'"
+          class="py-2 px-3 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 rounded-md border"
         >
           <component :is="tab.icon" class="w-4 h-4 inline-block" />
           {{ tab.label }}
         </button>
+        <span v-if="filteredTabs.length === 0" class="text-sm text-gray-500 py-2">Template tidak ditemukan.</span>
+        </div>
       </div>
     </div>
 
