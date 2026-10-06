@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { 
   FilePen, 
   Camera, 
@@ -15,7 +15,12 @@ import {
   Factory,
   Utensils,
   Search,
-  X
+  X,
+  Check,
+  Film,
+  ShoppingBag,
+  Gem,
+  Menu
 } from 'lucide-vue-next';
 
 import Gerobak from './components/templates/Gerobak.vue';
@@ -28,6 +33,9 @@ import Admin from './components/templates/Admin.vue';
 import Sales from './components/templates/Sales.vue';
 import HelperProduksi from './components/templates/HelperProduksi.vue';
 import StoreCrew from './components/templates/StoreCrew.vue';
+import ContentCreator from './components/templates/ContentCreator.vue';
+import SalesAssistant from './components/templates/SalesAssistant.vue';
+import JewelrySales from './components/templates/JewelrySales.vue';
 
 import { compressPhoto } from './utils/photo.js';
 
@@ -41,22 +49,31 @@ const tabs = [
   { id: 'admin', label: 'Admin / Data Entry', icon: Keyboard, defaultName: 'CV_Muhamad_Ikhsan_Admin_Data_Entry', component: Admin },
   { id: 'sales', label: 'Sales / Marketing', icon: Handshake, defaultName: 'CV_Muhamad_Ikhsan_Sales_Representative', component: Sales },
   { id: 'helper-produksi', label: 'Helper Produksi', icon: Factory, defaultName: 'CV_Muhamad_Ikhsan_Helper_Produksi', component: HelperProduksi },
-  { id: 'store-crew', label: 'Store Crew F&B', icon: Utensils, defaultName: 'CV_Muhamad_Ikhsan_Store_Crew', component: StoreCrew },
+  { id: 'store-crew', label: 'Store Crew F&B', category: 'Food & Beverages / UMKM', subcategory: 'Store Crew', icon: Utensils, defaultName: 'CV_Muhamad_Ikhsan_Store_Crew', component: StoreCrew },
+  { id: 'content-creator', label: 'Content Creator Intern', category: 'Marketing & Advertising', subcategory: 'Content Creator', icon: Film, defaultName: 'CV_Muhamad_Ikhsan_Content_Creator_Intern', component: ContentCreator },
+  { id: 'sales-assistant', label: 'Sales Assistant', category: 'Food & Beverages / UMKM', subcategory: 'Sales Assistant', icon: ShoppingBag, defaultName: 'CV_Muhamad_Ikhsan_Sales_Assistant', component: SalesAssistant },
+  { id: 'jewelry-sales', label: 'Sales Representative', category: 'Retail / Perhiasan', subcategory: 'Sales Representative', icon: Gem, defaultName: 'CV_Muhamad_Ikhsan_Sales_Representative_Retail', component: JewelrySales },
 ];
 
 const activeTab = ref('gerobak');
 const templateSearch = ref('');
+const mobileSidebarOpen = ref(false);
 const photoSrc = ref(null);
 const pdfFileName = ref('CV_Muhamad_Ikhsan_Penjaga_Gerobak');
 
 const filteredTabs = computed(() => {
   const query = templateSearch.value.trim().toLowerCase();
   if (!query) return tabs;
-  return tabs.filter(tab => tab.label.toLowerCase().includes(query));
+  return tabs.filter(tab => [tab.label, tab.category, tab.subcategory].filter(Boolean).join(' ').toLowerCase().includes(query));
 });
 
 function clearTemplateSearch() {
   templateSearch.value = '';
+}
+
+function selectTemplate(tabId) {
+  switchTab(tabId);
+  mobileSidebarOpen.value = false;
 }
 
 const activeComponent = computed(() => {
@@ -104,12 +121,22 @@ document.title = pdfFileName.value;
 </script>
 
 <template>
-  <div class="font-lato min-h-screen bg-gray-200">
-    <div class="w-full max-w-[210mm] mx-auto bg-white p-4 rounded-lg shadow-md mb-6 flex flex-col gap-4 no-print border-l-4 border-cv-dark px-4 sm:px-6">
+  <div class="app-shell pt-0 pb-0 lg:pt-4 lg:pb-6 font-lato min-h-screen bg-gray-200 overflow-x-hidden">
+    <div class="app-layout w-full max-w-[1400px] mx-auto px-0 lg:px-4 flex flex-col lg:flex-row gap-0 lg:gap-6 items-start">
+    <div v-if="mobileSidebarOpen" @click="mobileSidebarOpen = false" class="fixed inset-0 z-40 bg-black/40 lg:hidden no-print"></div>
+    <aside
+      class="fixed inset-y-0 left-0 z-50 w-[min(86vw,320px)] overflow-y-auto transform -translate-x-full transition-transform duration-300 lg:static lg:inset-auto lg:z-auto lg:translate-x-0 lg:w-80 lg:min-h-[calc(100vh-2rem)] lg:flex-none lg:sticky lg:top-0 lg:overflow-visible bg-white p-5 rounded-r-xl lg:rounded-xl shadow-xl lg:shadow-md flex flex-col gap-4 no-print border-l-4 border-cv-dark"
+      :class="{ 'translate-x-0': mobileSidebarOpen }"
+    >
+      <div class="flex items-center gap-2 border-b border-gray-100 pb-4">
+        <div class="w-9 h-9 rounded-lg bg-cv-dark text-white flex items-center justify-center"><FilePen class="w-5 h-5" /></div>
+        <div class="flex-1"><div class="text-lg font-black tracking-tight text-cv-dark">Cervia</div><div class="text-[10px] text-gray-500 uppercase tracking-widest">CV Maker</div></div>
+        <button type="button" @click="mobileSidebarOpen = false" class="lg:hidden p-1.5 rounded-md text-gray-500 hover:bg-gray-100 hover:text-cv-dark" aria-label="Tutup menu"><X class="w-5 h-5" /></button>
+      </div>
       <!-- BARIS ATAS: INPUT NAMA FILE PDF DAN TOMBOL AKSI -->
       <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 border-b border-gray-100 pb-3.5">
         <div class="flex-1 w-full min-w-0">
-          <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+          <label class="block whitespace-nowrap text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
             <FilePen class="w-3.5 h-3.5 inline-block text-cv-dark" /> NAMA FILE PDF SAAT DIUNDUH:
           </label>
           <div class="relative w-full">
@@ -140,49 +167,33 @@ document.title = pdfFileName.value;
         </div>
       </div>
 
-      <!-- PILIHAN TEMPLATE PROFESI -->
-      <div class="flex flex-col gap-3">
-        <div class="relative w-full md:max-w-sm">
+      <!-- DAFTAR TEMPLATE PROFESI -->
+      <div class="flex flex-col gap-3 pt-2 flex-1 min-h-0">
+        <div class="relative w-full">
           <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-          <input
-            v-model="templateSearch"
-            type="search"
-            placeholder="Cari template CV..."
-            aria-label="Cari template CV"
-            class="w-full text-sm pl-9 pr-9 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cv-dark focus:border-cv-dark focus:outline-none bg-gray-50 text-gray-800 transition shadow-sm"
-          >
-          <button
-            v-if="templateSearch"
-            @click="clearTemplateSearch"
-            type="button"
-            aria-label="Hapus pencarian"
-            class="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-cv-dark"
-          >
-            <X class="w-4 h-4" />
-          </button>
+          <input v-model="templateSearch" type="search" placeholder="Cari template CV..." aria-label="Cari template CV" class="w-full text-sm pl-9 pr-9 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cv-dark focus:border-cv-dark focus:outline-none bg-gray-50 text-gray-800 transition">
+          <button v-if="templateSearch" @click="clearTemplateSearch" type="button" aria-label="Hapus pencarian" class="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-cv-dark"><X class="w-4 h-4" /></button>
         </div>
-
-        <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-3">
-        <button 
-          v-for="tab in filteredTabs" 
-          :key="tab.id"
-          @click="switchTab(tab.id)" 
-          :class="activeTab === tab.id ? 'bg-cv-dark text-white border-cv-dark font-bold shadow-sm' : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-gray-400 hover:text-cv-dark font-medium'"
-          class="py-2 px-3 text-xs sm:text-sm transition-all duration-200 flex items-center gap-1.5 rounded-md border"
-        >
-          <component :is="tab.icon" class="w-4 h-4 inline-block" />
-          {{ tab.label }}
-        </button>
-        <span v-if="filteredTabs.length === 0" class="text-sm text-gray-500 py-2">Template tidak ditemukan.</span>
+        <div class="max-h-[28rem] flex-none overflow-y-auto pr-1 space-y-1">
+          <button v-for="tab in filteredTabs" :key="tab.id" type="button" @click="selectTemplate(tab.id)" class="w-full flex items-center justify-between gap-3 rounded-md px-3 py-2.5 text-left hover:bg-gray-100 transition" :class="activeTab === tab.id ? 'bg-gray-100 text-cv-dark ring-1 ring-gray-300' : 'text-gray-700'">
+            <span class="flex items-center gap-2 min-w-0"><component :is="tab.icon" class="w-4 h-4 shrink-0" /><span class="flex flex-col min-w-0 leading-tight"><span class="text-sm font-semibold truncate">{{ tab.label }}</span><span v-if="tab.category" class="text-[10px] text-gray-500 truncate">{{ tab.category }} · {{ tab.subcategory }}</span></span></span>
+            <Check v-if="activeTab === tab.id" class="w-4 h-4 shrink-0" />
+          </button>
+          <div v-if="filteredTabs.length === 0" class="px-3 py-3 text-sm text-gray-500">Template tidak ditemukan.</div>
         </div>
       </div>
-    </div>
+    </aside>
 
     <!-- AREA UTAMA PENAMPIL TEMPLATE CV -->
-    <div class="w-full flex justify-center px-0">
+    <main class="flex-1 min-w-0 w-full flex justify-center self-start mt-0">
       <div class="cv-wrapper flex flex-col md:flex-row relative w-full max-w-[210mm] bg-white shadow-lg">
         <component :is="activeComponent" :photo-src="photoSrc" />
       </div>
+    </main>
     </div>
+
+    <button type="button" @click="mobileSidebarOpen = true" class="lg:hidden fixed top-4 left-4 z-30 w-11 h-11 rounded-xl bg-cv-dark text-white shadow-lg flex items-center justify-center active:scale-95 transition no-print" aria-label="Buka menu Cervia">
+      <Menu class="w-5 h-5" />
+    </button>
   </div>
 </template>
