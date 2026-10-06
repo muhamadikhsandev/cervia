@@ -186,8 +186,8 @@ document.title = pdfFileName.value;
           <button v-if="templateSearch" @click="clearTemplateSearch" type="button" aria-label="Hapus pencarian" class="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-cv-dark"><X class="w-4 h-4" /></button>
         </div>
         <div class="max-h-[28rem] flex-none overflow-y-auto pr-1 space-y-1">
-          <button v-for="tab in filteredTabs" :key="tab.id" type="button" @click="selectTemplate(tab.id)" class="w-full flex items-center justify-between gap-3 rounded-md px-3 py-2.5 text-left hover:bg-gray-100 transition" :class="activeTab === tab.id ? 'bg-gray-100 text-cv-dark ring-1 ring-gray-300' : 'text-gray-700'">
-            <span class="flex items-center gap-2 min-w-0"><component :is="tab.icon" class="w-4 h-4 shrink-0" /><span class="flex flex-col min-w-0 leading-tight"><span class="text-sm font-semibold truncate">{{ tab.label }}</span><span v-if="tab.category" class="text-[10px] text-gray-500 truncate">{{ tab.category }} · {{ tab.subcategory }}</span></span></span>
+          <button v-for="tab in filteredTabs" :key="tab.id" type="button" @click="selectTemplate(tab.id)" class="w-full flex items-center justify-between gap-3 rounded-md px-3 py-3 text-left transition" :class="activeTab === tab.id ? 'bg-cv-dark text-white shadow-sm hover:bg-black' : 'text-gray-700 hover:bg-gray-100'">
+            <span class="flex items-center gap-2 min-w-0"><component :is="tab.icon" class="w-4 h-4 shrink-0" /><span class="flex flex-col min-w-0 leading-tight"><span class="text-sm font-semibold truncate">{{ tab.label }}</span><span v-if="tab.category" class="text-[10px] truncate" :class="activeTab === tab.id ? 'text-white/70' : 'text-gray-500'">{{ tab.category }} · {{ tab.subcategory }}</span></span></span>
             <Check v-if="activeTab === tab.id" class="w-4 h-4 shrink-0" />
           </button>
           <div v-if="filteredTabs.length === 0" class="px-3 py-3 text-sm text-gray-500">Template tidak ditemukan.</div>
