@@ -20,7 +20,8 @@ import {
   Film,
   ShoppingBag,
   Gem,
-  Menu
+  Menu,
+  Download
 } from 'lucide-vue-next';
 
 import Gerobak from './components/templates/Gerobak.vue';
@@ -204,6 +205,9 @@ document.title = pdfFileName.value;
 
     <button type="button" @click="openMobileSidebar" class="lg:hidden fixed top-4 left-4 z-30 w-11 h-11 rounded-xl bg-cv-dark text-white shadow-lg flex items-center justify-center active:scale-95 transition no-print" aria-label="Buka menu Cervia">
       <Menu class="w-5 h-5" />
+    </button>
+    <button type="button" @click="downloadPDF" class="lg:hidden fixed top-4 left-16 z-30 h-11 px-3 rounded-xl bg-white text-cv-dark border border-gray-200 shadow-lg flex items-center gap-2 active:scale-95 transition no-print" aria-label="Unduh PDF">
+      <Download class="w-4 h-4" /><span class="text-xs font-bold">PDF</span>
     </button>
   </div>
 </template>
