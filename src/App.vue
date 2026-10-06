@@ -41,7 +41,7 @@ const tabs = [
   { id: 'admin', label: 'Admin / Data Entry', icon: Keyboard, defaultName: 'CV_Muhamad_Ikhsan_Admin_Data_Entry', component: Admin },
   { id: 'sales', label: 'Sales / Marketing', icon: Handshake, defaultName: 'CV_Muhamad_Ikhsan_Sales_Representative', component: Sales },
   { id: 'helper-produksi', label: 'Helper Produksi', icon: Factory, defaultName: 'CV_Muhamad_Ikhsan_Helper_Produksi', component: HelperProduksi },
-  { id: 'store-crew', label: 'Store Crew F&B', icon: Utensils, defaultName: 'CV_Fresh_Graduate_Store_Crew_FnB', component: StoreCrew },
+  { id: 'store-crew', label: 'Store Crew F&B', icon: Utensils, defaultName: 'CV_Muhamad_Ikhsan_Store_Crew', component: StoreCrew },
 ];
 
 const activeTab = ref('gerobak');
