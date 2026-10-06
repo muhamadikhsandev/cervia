@@ -104,7 +104,7 @@ document.title = pdfFileName.value;
 </script>
 
 <template>
-  <div class="py-4 md:py-10 font-lato min-h-screen bg-gray-200">
+  <div class="font-lato min-h-screen bg-gray-200">
     <div class="w-full max-w-[210mm] mx-auto bg-white p-4 rounded-lg shadow-md mb-6 flex flex-col gap-4 no-print border-l-4 border-cv-dark px-4 sm:px-6">
       <!-- BARIS ATAS: INPUT NAMA FILE PDF DAN TOMBOL AKSI -->
       <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 border-b border-gray-100 pb-3.5">
@@ -179,7 +179,7 @@ document.title = pdfFileName.value;
     </div>
 
     <!-- AREA UTAMA PENAMPIL TEMPLATE CV -->
-    <div class="w-full flex justify-center px-2 sm:px-4">
+    <div class="w-full flex justify-center px-0">
       <div class="cv-wrapper flex flex-col md:flex-row relative w-full max-w-[210mm] bg-white shadow-lg">
         <component :is="activeComponent" :photo-src="photoSrc" />
       </div>

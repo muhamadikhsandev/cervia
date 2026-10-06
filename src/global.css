@@ -55,6 +55,7 @@ body {
 .cv-wrapper {
     width: 100%;
     max-width: 210mm;
+    height: 297mm;
     min-height: 297mm;
     margin: 0 auto;
     background: white;
