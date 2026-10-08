@@ -53,10 +53,10 @@ const letters = {
   sales: {
     role: 'Direct Sales',
     recipient: 'Bapak/Ibu HRD PT Gloria Jasa Mandiri',
-    opening: 'Sehubungan dengan wawancara melalui telepon yang telah saya ikuti, saya bermaksud menyampaikan kesiapan untuk mengikuti tahapan training pada posisi Direct Sales di PT Gloria Jasa Mandiri.',
-    body: 'Saya memiliki minat besar pada bidang penjualan dan siap mempelajari produk, layanan, serta standar kerja yang berlaku di perusahaan. Dalam tahap training, saya siap belajar melakukan pendekatan kepada calon pelanggan, menjelaskan manfaat produk dengan baik, menjawab pertanyaan pelanggan, melakukan follow-up, dan memberikan pelayanan yang sopan serta profesional.',
-    fit: 'Saya komunikatif, percaya diri, jujur, pantang menyerah, berorientasi pada target, mudah menerima arahan, dan siap mengikuti proses training dengan sungguh-sungguh.',
-    closing: 'Sebagai bahan pertimbangan, saya melampirkan daftar riwayat hidup. Saya siap mengikuti training sesuai jadwal dan ketentuan yang ditetapkan serta menerima evaluasi selama proses tersebut.'
+    opening: 'Sehubungan dengan wawancara melalui telepon yang telah saya ikuti, saya bermaksud mengajukan lamaran untuk posisi Direct Sales di PT Gloria Jasa Mandiri.',
+    body: 'Saya memiliki minat besar pada bidang penjualan dan siap mempelajari produk, layanan, serta standar kerja yang berlaku di perusahaan. Saya siap melakukan pendekatan kepada calon pelanggan, menjelaskan manfaat produk dengan baik, menjawab pertanyaan pelanggan, melakukan follow-up, dan memberikan pelayanan yang sopan serta profesional.',
+    fit: 'Saya komunikatif, percaya diri, jujur, pantang menyerah, berorientasi pada target, mudah menerima arahan, dan mampu bekerja secara mandiri maupun dalam tim.',
+    closing: 'Sebagai bahan pertimbangan, saya melampirkan daftar riwayat hidup. Saya siap mengikuti proses seleksi sesuai jadwal dan ketentuan yang ditetapkan serta memberikan kontribusi terbaik bagi perusahaan.'
   },
   'helper-produksi': {
     role: 'Helper Produksi',
@@ -118,7 +118,7 @@ const letter = computed(() => letters[props.templateId] || letters.gerobak);
     <h2
       contenteditable="true"
       class="font-lato font-bold text-center tracking-normal text-base text-black mb-6"
-    >{{ letter.role === 'Direct Sales' ? 'Perihal: Training Direct Sales' : 'Perihal: Lamaran Pekerjaan' }}</h2>
+    >Perihal: Lamaran Pekerjaan</h2>
     <section contenteditable="true" class="text-[14px] leading-relaxed text-justify space-y-4">
       <p>Dengan hormat,</p>
       <p>{{ letter.opening }}</p>
