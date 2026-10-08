@@ -94,7 +94,7 @@ const letter = computed(() => letters[props.templateId] || letters.gerobak);
 </script>
 
 <template>
-  <article class="cover-letter-page w-full min-h-full bg-white px-6 py-24 md:px-14 md:py-12 text-gray-700">
+  <article class="cover-letter-page w-full min-h-full bg-white px-6 pt-[4.5rem] pb-8 md:px-14 md:py-12 text-gray-700">
     <header class="border-b-2 border-cv-dark pb-5 mb-7">
       <div class="flex items-start justify-between gap-6">
         <div class="min-w-0">
@@ -115,7 +115,10 @@ const letter = computed(() => letters[props.templateId] || letters.gerobak);
       <div contenteditable="true" class="flex items-center gap-1 text-right text-gray-500"><CalendarDays class="w-3.5 h-3.5" /> {{ new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) }}</div>
     </div>
 
-    <h2 contenteditable="true" class="font-lato font-bold text-center text-cv-dark tracking-widest uppercase text-sm mb-6">Perihal: Lamaran Pekerjaan</h2>
+    <h2
+      contenteditable="true"
+      class="font-lato font-bold text-center tracking-normal text-base text-black mb-6"
+    >{{ letter.role === 'Direct Sales' ? 'Perihal: Training Direct Sales' : 'Perihal: Lamaran Pekerjaan' }}</h2>
     <section contenteditable="true" class="text-[14px] leading-relaxed text-justify space-y-4">
       <p>Dengan hormat,</p>
       <p>{{ letter.opening }}</p>
