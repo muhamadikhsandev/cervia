@@ -52,9 +52,11 @@ const letters = {
   },
   sales: {
     role: 'Direct Sales',
-    opening: 'Dengan hormat, saya bermaksud melamar posisi Direct Sales di PT Gloria Jasa Mandiri.',
-    body: 'Saya memiliki minat besar pada bidang penjualan dan siap berkontribusi dalam menawarkan produk atau layanan perusahaan kepada calon pelanggan. Saya siap melakukan pendekatan secara langsung, menjelaskan manfaat produk dengan baik, menjawab pertanyaan pelanggan, melakukan follow-up, serta membangun hubungan yang positif dengan pelanggan.',
-    fit: 'Saya komunikatif, percaya diri, jujur, pantang menyerah, berorientasi pada target, dan siap menerima arahan serta bimbingan dari supervisor.'
+    recipient: 'Bapak/Ibu HRD PT Gloria Jasa Mandiri',
+    opening: 'Sehubungan dengan wawancara melalui telepon yang telah saya ikuti, saya bermaksud menyampaikan kesiapan untuk mengikuti tahapan training pada posisi Direct Sales di PT Gloria Jasa Mandiri.',
+    body: 'Saya memiliki minat besar pada bidang penjualan dan siap mempelajari produk, layanan, serta standar kerja yang berlaku di perusahaan. Dalam tahap training, saya siap belajar melakukan pendekatan kepada calon pelanggan, menjelaskan manfaat produk dengan baik, menjawab pertanyaan pelanggan, melakukan follow-up, dan memberikan pelayanan yang sopan serta profesional.',
+    fit: 'Saya komunikatif, percaya diri, jujur, pantang menyerah, berorientasi pada target, mudah menerima arahan, dan siap mengikuti proses training dengan sungguh-sungguh.',
+    closing: 'Sebagai bahan pertimbangan, saya melampirkan daftar riwayat hidup. Saya siap mengikuti training sesuai jadwal dan ketentuan yang ditetapkan serta menerima evaluasi selama proses tersebut.'
   },
   'helper-produksi': {
     role: 'Helper Produksi',
@@ -92,11 +94,11 @@ const letter = computed(() => letters[props.templateId] || letters.gerobak);
 </script>
 
 <template>
-  <article class="cover-letter-page w-full min-h-full bg-white px-8 py-8 md:px-14 md:py-12 text-gray-700">
+  <article class="cover-letter-page w-full min-h-full bg-white px-6 py-24 md:px-14 md:py-12 text-gray-700">
     <header class="border-b-2 border-cv-dark pb-5 mb-7">
       <div class="flex items-start justify-between gap-6">
-        <div>
-          <h1 contenteditable="true" class="font-playfair text-3xl md:text-4xl font-semibold uppercase tracking-wide text-cv-dark">MUHAMAD IKHSAN</h1>
+        <div class="min-w-0">
+          <h1 contenteditable="true" class="font-playfair text-2xl sm:text-3xl md:text-4xl font-semibold uppercase tracking-wide text-cv-dark">MUHAMAD IKHSAN</h1>
           <p contenteditable="true" class="mt-2 text-xs font-bold tracking-[0.18em] uppercase text-gray-500">Lamaran {{ letter.role }}</p>
         </div>
         <FileText class="w-9 h-9 text-cv-dark shrink-0" />
@@ -109,17 +111,17 @@ const letter = computed(() => letters[props.templateId] || letters.gerobak);
     </header>
 
     <div class="flex justify-between items-start mb-7 text-[13px]">
-      <div contenteditable="true"><p>Kepada Yth.</p><p class="font-bold text-cv-dark">Bapak/Ibu HRD {{ letter.role }}</p><p>di Tempat</p></div>
+      <div contenteditable="true"><p>Kepada Yth.</p><p class="font-bold text-cv-dark">{{ letter.recipient || `Bapak/Ibu HRD ${letter.role}` }}</p><p>di Tempat</p></div>
       <div contenteditable="true" class="flex items-center gap-1 text-right text-gray-500"><CalendarDays class="w-3.5 h-3.5" /> {{ new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) }}</div>
     </div>
 
     <h2 contenteditable="true" class="font-lato font-bold text-center text-cv-dark tracking-widest uppercase text-sm mb-6">Perihal: Lamaran Pekerjaan</h2>
-    <section contenteditable="true" class="text-[13px] leading-relaxed text-justify space-y-4">
+    <section contenteditable="true" class="text-[14px] leading-relaxed text-justify space-y-4">
       <p>Dengan hormat,</p>
       <p>{{ letter.opening }}</p>
       <p>Saya adalah lulusan SMKN 1 Ciomas jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). {{ letter.body }}</p>
       <p>{{ letter.fit }}</p>
-      <p>Sebagai bahan pertimbangan, saya melampirkan daftar riwayat hidup. Besar harapan saya untuk diberikan kesempatan mengikuti proses seleksi dan menjelaskan potensi saya lebih lanjut dalam wawancara.</p>
+      <p>{{ letter.closing || 'Sebagai bahan pertimbangan, saya melampirkan daftar riwayat hidup. Besar harapan saya untuk diberikan kesempatan mengikuti proses seleksi dan menjelaskan potensi saya lebih lanjut dalam wawancara.' }}</p>
       <p>Demikian surat lamaran ini saya buat dengan sebenar-benarnya. Atas perhatian dan kesempatan yang diberikan, saya ucapkan terima kasih.</p>
     </section>
 
