@@ -37,6 +37,7 @@ import StoreCrew from './components/templates/StoreCrew.vue';
 import ContentCreator from './components/templates/ContentCreator.vue';
 import SalesAssistant from './components/templates/SalesAssistant.vue';
 import JewelrySales from './components/templates/JewelrySales.vue';
+import CoverLetter from './components/templates/CoverLetter.vue';
 
 import { compressPhoto } from './utils/photo.js';
 
@@ -57,6 +58,7 @@ const tabs = [
 ];
 
 const activeTab = ref('gerobak');
+const documentMode = ref('cv');
 const templateSearch = ref('');
 const mobileSidebarOpen = ref(false);
 const photoSrc = ref(null);
@@ -88,16 +90,32 @@ function closeMobileSidebar() {
 }
 
 const activeComponent = computed(() => {
+  if (documentMode.value === 'cover-letter') return CoverLetter;
   const current = tabs.find(t => t.id === activeTab.value);
   return current ? current.component : Gerobak;
 });
+
+const activeTemplateLabel = computed(() => tabs.find(t => t.id === activeTab.value)?.label || 'Lamaran Kerja');
 
 function switchTab(tabId) {
   activeTab.value = tabId;
   const current = tabs.find(t => t.id === tabId);
   if (current) {
-    pdfFileName.value = current.defaultName;
-    document.title = current.defaultName;
+    pdfFileName.value = documentMode.value === 'cover-letter'
+      ? current.defaultName.replace(/^CV_/, 'Surat_Lamaran_')
+      : current.defaultName;
+    document.title = pdfFileName.value;
+  }
+}
+
+function switchDocumentMode(mode) {
+  documentMode.value = mode;
+  const current = tabs.find(t => t.id === activeTab.value);
+  if (current) {
+    pdfFileName.value = mode === 'cover-letter'
+      ? current.defaultName.replace(/^CV_/, 'Surat_Lamaran_')
+      : current.defaultName;
+    document.title = pdfFileName.value;
   }
 }
 
@@ -180,6 +198,10 @@ document.title = pdfFileName.value;
 
       <!-- DAFTAR TEMPLATE PROFESI -->
       <div class="flex flex-col gap-3 pt-2 flex-1 min-h-0">
+        <div class="grid grid-cols-2 gap-1 rounded-lg bg-gray-100 p-1 no-print">
+          <button type="button" @click="switchDocumentMode('cv')" class="rounded-md px-2 py-2 text-xs font-bold transition" :class="documentMode === 'cv' ? 'bg-white text-cv-dark shadow-sm' : 'text-gray-500 hover:text-cv-dark'">Template CV</button>
+          <button type="button" @click="switchDocumentMode('cover-letter')" class="rounded-md px-2 py-2 text-xs font-bold transition" :class="documentMode === 'cover-letter' ? 'bg-white text-cv-dark shadow-sm' : 'text-gray-500 hover:text-cv-dark'">Surat Lamaran</button>
+        </div>
         <div class="relative w-full">
           <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
           <input v-model="templateSearch" type="search" placeholder="Cari template CV..." aria-label="Cari template CV" class="w-full text-sm pl-9 pr-9 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cv-dark focus:border-cv-dark focus:outline-none bg-gray-50 text-gray-800 transition">
@@ -198,7 +220,7 @@ document.title = pdfFileName.value;
     <!-- AREA UTAMA PENAMPIL TEMPLATE CV -->
     <main class="flex-1 min-w-0 w-full flex justify-center self-start mt-0">
       <div class="cv-wrapper flex flex-col md:flex-row relative w-full max-w-[210mm] bg-white shadow-lg">
-        <component :is="activeComponent" :photo-src="photoSrc" />
+        <component :is="activeComponent" :photo-src="photoSrc" :template-id="activeTab" :template-label="activeTemplateLabel" />
       </div>
     </main>
     </div>
