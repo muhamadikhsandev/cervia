@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { 
   FilePen, 
   Camera, 
@@ -16,12 +16,12 @@ import {
   Utensils,
   Search,
   X,
-  Check,
   Film,
   ShoppingBag,
   Gem,
   Menu,
-  Download
+  Download,
+  ArrowLeft
 } from 'lucide-vue-next';
 
 import Gerobak from './components/templates/Gerobak.vue';
@@ -38,8 +38,10 @@ import ContentCreator from './components/templates/ContentCreator.vue';
 import SalesAssistant from './components/templates/SalesAssistant.vue';
 import JewelrySales from './components/templates/JewelrySales.vue';
 import CoverLetter from './components/templates/CoverLetter.vue';
+import LokerCv from './components/templates/LokerCv.vue';
 
 import { compressPhoto } from './utils/photo.js';
+import defaultPhoto from '../foto-profil-default.jpg';
 
 const tabs = [
   { id: 'gerobak', label: 'Penjaga Gerobak', icon: Store, defaultName: 'CV_Muhamad_Ikhsan_Penjaga_Gerobak', component: Gerobak },
@@ -55,14 +57,51 @@ const tabs = [
   { id: 'content-creator', label: 'Content Creator Intern', category: 'Marketing & Advertising', subcategory: 'Content Creator', icon: Film, defaultName: 'CV_Muhamad_Ikhsan_Content_Creator_Intern', component: ContentCreator },
   { id: 'sales-assistant', label: 'Sales Assistant', category: 'Food & Beverages / UMKM', subcategory: 'Sales Assistant', icon: ShoppingBag, defaultName: 'CV_Muhamad_Ikhsan_Sales_Assistant', component: SalesAssistant },
   { id: 'jewelry-sales', label: 'Sales Representative', category: 'Retail / Perhiasan', subcategory: 'Sales Representative', icon: Gem, defaultName: 'CV_Muhamad_Ikhsan_Sales_Representative_Retail', component: JewelrySales },
+  { id: 'job-3', label: 'Staff Outlet', category: 'Lowongan 3', subcategory: 'Food & Beverages', icon: Utensils, defaultName: 'CV_Nama_Staff_Outlet_Dimsumart', component: LokerCv },
+  { id: 'job-4', label: 'Operator Packing', category: 'Lowongan 4', subcategory: 'Produksi', icon: Factory, defaultName: 'CV_Nama_Operator_Packing', component: LokerCv },
+  { id: 'job-5', label: 'Admin Stock Opname', category: 'Lowongan 5', subcategory: 'Administrasi Gudang', icon: Boxes, defaultName: 'CV_Nama_Admin_Stock_Opname', component: LokerCv },
+  { id: 'job-6', label: 'Crew Store', category: 'Lowongan 6', subcategory: 'Petshop', icon: Store, defaultName: 'CV_Nama_Crew_Store_Petshop', component: LokerCv },
+  { id: 'job-7', label: 'Customer Service', category: 'Lowongan 7', subcategory: 'Layanan Pelanggan', icon: Handshake, defaultName: 'CV_Nama_Customer_Service_Arasya', component: LokerCv },
+  { id: 'job-8', label: 'Service Kopi', category: 'Lowongan 8', subcategory: 'Kedai Kopi', icon: Croissant, defaultName: 'CV_Nama_Service_Kopi_Satu_Tudju', component: LokerCv },
+  { id: 'job-10', label: 'Casual Warehouse', category: 'Lowongan 10', subcategory: 'Gudang', icon: Boxes, defaultName: 'CV_Nama_Casual_Warehouse_Naturlife', component: LokerCv },
+  { id: 'job-11', label: 'Waiter', category: 'Lowongan 11', subcategory: 'Restoran', icon: Utensils, defaultName: 'CV_Nama_Waiter_Bears_Group', component: LokerCv },
 ];
 
 const activeTab = ref('gerobak');
 const documentMode = ref('cv');
 const templateSearch = ref('');
 const mobileSidebarOpen = ref(false);
-const photoSrc = ref(null);
+const photoSrc = ref(defaultPhoto);
 const pdfFileName = ref('CV_Muhamad_Ikhsan_Penjaga_Gerobak');
+const showTemplateGallery = ref(false);
+const previewZoom = ref(1);
+
+function adjustPreviewZoom(amount) {
+  previewZoom.value = Math.min(1, Math.max(0.3, Math.round((previewZoom.value + amount) * 100) / 100));
+}
+
+function setPreviewZoom(event) {
+  const input = event.target;
+  if (input.value === '') return;
+  const value = Number(input.value);
+  if (!Number.isFinite(value)) return;
+  if (value > 100) {
+    input.value = '100';
+    previewZoom.value = 1;
+  } else if (value >= 30) {
+    previewZoom.value = value / 100;
+  }
+}
+
+function normalizePreviewZoomInput(event) {
+  const input = event.target;
+  const value = Number(input.value);
+  const clampedValue = input.value === '' || !Number.isFinite(value)
+    ? Math.round(previewZoom.value * 100)
+    : Math.min(100, Math.max(30, value));
+  input.value = String(clampedValue);
+  previewZoom.value = clampedValue / 100;
+}
 
 const filteredTabs = computed(() => {
   const query = templateSearch.value.trim().toLowerCase();
@@ -101,9 +140,7 @@ function switchTab(tabId) {
   activeTab.value = tabId;
   const current = tabs.find(t => t.id === tabId);
   if (current) {
-    pdfFileName.value = documentMode.value === 'cover-letter'
-      ? current.defaultName.replace(/^CV_/, 'Surat_Lamaran_')
-      : current.defaultName;
+    pdfFileName.value = formatDocumentFileName(documentMode.value, current.label);
     document.title = pdfFileName.value;
   }
 }
@@ -112,17 +149,24 @@ function switchDocumentMode(mode) {
   documentMode.value = mode;
   const current = tabs.find(t => t.id === activeTab.value);
   if (current) {
-    pdfFileName.value = mode === 'cover-letter'
-      ? current.defaultName.replace(/^CV_/, 'Surat_Lamaran_')
-      : current.defaultName;
+    pdfFileName.value = formatDocumentFileName(mode, current.label);
     document.title = pdfFileName.value;
   }
 }
 
 function updateDocumentTitle() {
-  if (pdfFileName.value) {
-    document.title = pdfFileName.value.trim();
-  }
+  const name = pdfFileName.value.trim().replace(/\.pdf$/i, '');
+  if (name) document.title = name;
+}
+
+function formatDocumentFileName(mode, label) {
+  const position = label
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+  const prefix = mode === 'cover-letter' ? 'Surat_Lamaran_Muhamad_Ikhsan' : 'CV_Muhamad_Ikhsan';
+  return `${prefix}_${position}`;
 }
 
 async function onPhotoUpload(event) {
@@ -138,23 +182,39 @@ async function onPhotoUpload(event) {
   }
 }
 
-function downloadPDF() {
-  updateDocumentTitle();
-  setTimeout(() => {
-    window.print();
-  }, 100);
+async function waitForImages(container) {
+  const images = [...container.querySelectorAll('img')];
+  await Promise.all(images.map(image => {
+    if (image.complete && image.naturalWidth > 0) return Promise.resolve();
+    if (typeof image.decode === 'function') return image.decode().catch(() => {});
+    return new Promise(resolve => {
+      image.addEventListener('load', resolve, { once: true });
+      image.addEventListener('error', resolve, { once: true });
+    });
+  }));
 }
+
+async function downloadPDF() {
+  updateDocumentTitle();
+  await nextTick();
+  await waitForImages(document.querySelector('.app-layout main'));
+  window.print();
+}
+
+window.addEventListener('afterprint', () => {
+  document.title = pdfFileName.value.trim() || 'CV';
+});
 
 // Inisialisasi judul tab awal
 document.title = pdfFileName.value;
 </script>
 
 <template>
-  <div class="app-shell pt-0 pb-0 lg:pt-4 lg:pb-6 font-lato min-h-screen bg-gray-200 overflow-x-hidden">
+  <div class="app-shell pt-0 pb-0 lg:h-screen lg:min-h-0 lg:overflow-hidden lg:pt-4 lg:pb-4 font-lato min-h-screen bg-gray-200 overflow-x-clip">
     <div class="app-layout w-full max-w-[1400px] mx-auto px-0 lg:px-4 flex flex-col lg:flex-row gap-0 lg:gap-6 items-start">
     <div v-if="mobileSidebarOpen" @click="closeMobileSidebar" class="fixed inset-0 z-40 bg-black/40 lg:hidden no-print"></div>
     <aside
-      class="fixed inset-y-0 left-0 z-50 w-[min(86vw,320px)] overflow-y-auto transform -translate-x-full transition-transform duration-300 lg:static lg:inset-auto lg:z-auto lg:translate-x-0 lg:w-80 lg:min-h-[calc(100vh-2rem)] lg:flex-none lg:sticky lg:top-0 lg:overflow-visible bg-white p-5 rounded-r-xl lg:rounded-xl shadow-xl lg:shadow-md flex flex-col gap-4 no-print border-l-4 border-cv-dark"
+      class="fixed inset-y-0 left-0 z-50 w-[min(86vw,320px)] overflow-y-auto transform -translate-x-full transition-transform duration-300 lg:static lg:inset-auto lg:z-auto lg:translate-x-0 lg:w-80 lg:h-[calc(100vh-2rem)] lg:max-h-[calc(100vh-2rem)] lg:flex-none lg:sticky lg:top-4 lg:overscroll-contain bg-white p-5 rounded-r-xl lg:rounded-xl shadow-xl lg:shadow-md flex flex-col gap-4 no-print border-l-4 border-cv-dark"
       :class="{ 'translate-x-0': mobileSidebarOpen }"
     >
       <div class="flex items-center gap-2 border-b border-gray-100 pb-4">
@@ -207,10 +267,10 @@ document.title = pdfFileName.value;
           <input v-model="templateSearch" type="search" placeholder="Cari template CV..." aria-label="Cari template CV" class="w-full text-sm pl-9 pr-9 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-cv-dark focus:border-cv-dark focus:outline-none bg-gray-50 text-gray-800 transition">
           <button v-if="templateSearch" @click="clearTemplateSearch" type="button" aria-label="Hapus pencarian" class="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-cv-dark"><X class="w-4 h-4" /></button>
         </div>
-        <div class="max-h-[28rem] flex-none overflow-y-auto pr-1 space-y-1">
+        <button type="button" @click="switchDocumentMode('cv'); showTemplateGallery = true" class="w-full rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-bold text-cv-dark hover:bg-gray-100">Lihat semua CV dalam kertas</button>
+        <div class="max-h-[28rem] flex-none overflow-y-auto pr-1 space-y-1 lg:max-h-none lg:flex-1 lg:min-h-0">
           <button v-for="tab in filteredTabs" :key="tab.id" type="button" @click="selectTemplate(tab.id)" class="w-full flex items-center justify-between gap-3 rounded-md px-3 py-3 text-left transition" :class="activeTab === tab.id ? 'bg-cv-dark text-white shadow-sm hover:bg-black' : 'text-gray-700 hover:bg-gray-100'">
             <span class="flex items-center gap-2 min-w-0"><component :is="tab.icon" class="w-4 h-4 shrink-0" /><span class="flex flex-col min-w-0 leading-tight"><span class="text-sm font-semibold truncate">{{ tab.label }}</span><span v-if="tab.category" class="text-[10px] truncate" :class="activeTab === tab.id ? 'text-white/70' : 'text-gray-500'">{{ tab.category }} · {{ tab.subcategory }}</span></span></span>
-            <Check v-if="activeTab === tab.id" class="w-4 h-4 shrink-0" />
           </button>
           <div v-if="filteredTabs.length === 0" class="px-3 py-3 text-sm text-gray-500">Template tidak ditemukan.</div>
         </div>
@@ -218,8 +278,25 @@ document.title = pdfFileName.value;
     </aside>
 
     <!-- AREA UTAMA PENAMPIL TEMPLATE CV -->
-    <main class="flex-1 min-w-0 w-full flex justify-center self-start mt-0">
-      <div class="cv-wrapper flex flex-col md:flex-row relative w-full max-w-[210mm] bg-white shadow-lg">
+    <main class="relative flex-1 min-w-0 w-full flex flex-col items-center justify-start self-start mt-0 lg:sticky lg:top-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-auto lg:overscroll-contain">
+      <div v-if="!showTemplateGallery" class="preview-zoom-controls no-print" role="group" aria-label="Ukuran pratinjau CV">
+        <button type="button" @click="adjustPreviewZoom(-0.05)" :disabled="previewZoom <= 0.3" aria-label="Perkecil pratinjau" title="Perkecil" class="preview-zoom-button">−</button>
+        <label class="preview-zoom-field"><input type="number" min="30" max="100" step="1" :value="Math.round(previewZoom * 100)" @input="setPreviewZoom" @blur="normalizePreviewZoomInput" aria-label="Persentase ukuran pratinjau"><span>%</span></label>
+        <button type="button" @click="adjustPreviewZoom(0.05)" :disabled="previewZoom >= 1" aria-label="Perbesar pratinjau" title="Perbesar" class="preview-zoom-button">+</button>
+      </div>
+      <section v-if="showTemplateGallery" class="template-gallery-section w-full p-3 md:p-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+          <div><h1 class="text-xl font-bold text-cv-dark">Semua Template CV</h1><p class="text-sm text-gray-500">{{ filteredTabs.length }} template · pilih kertas untuk melihat CV</p></div>
+          <button type="button" @click="showTemplateGallery = false" class="inline-flex shrink-0 items-center gap-2 rounded-md bg-cv-dark px-3 py-2 text-sm font-semibold text-white hover:bg-black"><ArrowLeft class="h-4 w-4" />Kembali ke CV</button>
+        </div>
+        <div class="template-gallery-grid">
+          <button v-for="tab in filteredTabs" :key="tab.id" type="button" @click="selectTemplate(tab.id); showTemplateGallery = false" class="template-gallery-card" :aria-label="`Buka template ${tab.label}`">
+            <div class="template-gallery-paper"><div class="template-gallery-scaled"><div class="cv-wrapper flex flex-row relative w-full max-w-[210mm] bg-white"><component :is="tab.component" :photo-src="photoSrc" :template-id="tab.id" :template-label="tab.label" /></div></div></div>
+            <div class="px-2 py-2 text-left"><div class="truncate text-xs font-bold text-cv-dark">{{ tab.label }}</div><div v-if="tab.category" class="truncate text-[10px] text-gray-500">{{ tab.category }}</div></div>
+          </button>
+        </div>
+      </section>
+      <div v-else class="cv-screen-preview cv-wrapper flex flex-col md:flex-row relative w-full max-w-[210mm] bg-white shadow-lg" :style="{ zoom: previewZoom }">
         <component :is="activeComponent" :photo-src="photoSrc" :template-id="activeTab" :template-label="activeTemplateLabel" />
       </div>
     </main>

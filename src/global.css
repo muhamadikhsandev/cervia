@@ -66,6 +66,146 @@ body {
     min-height: 297mm;
 }
 
+.preview-zoom-controls {
+    position: sticky;
+    z-index: 5;
+    top: 0.75rem;
+    align-self: flex-end;
+    flex: none;
+    margin: 0.75rem 0.75rem 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+}
+
+.preview-zoom-button {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border-radius: 0.35rem;
+    color: #111827;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.preview-zoom-button:hover:not(:disabled) {
+    background: #f3f4f6;
+}
+
+.preview-zoom-button:disabled {
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.preview-zoom-field {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    padding: 0 0.35rem;
+    color: #374151;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.preview-zoom-field input {
+    width: 2.5rem;
+    border: 0;
+    background: transparent;
+    text-align: right;
+    font: inherit;
+    outline: none;
+}
+
+.preview-zoom-field input::-webkit-inner-spin-button,
+.preview-zoom-field input::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.template-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 1023px) {
+    .template-gallery-section {
+        padding-top: 4.5rem;
+    }
+}
+
+.template-gallery-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background: white;
+    text-align: left;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.template-gallery-card:hover {
+    border-color: #64748b;
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.12);
+    transform: translateY(-2px);
+}
+
+.template-gallery-paper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 210 / 297;
+    container-type: inline-size;
+    overflow: hidden;
+    background: white;
+}
+
+.template-gallery-scaled {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 210mm;
+    height: 297mm;
+    zoom: calc(100cqw / 210mm);
+    pointer-events: none;
+}
+
+.template-gallery-scaled [contenteditable="true"] {
+    pointer-events: none;
+}
+
+.template-gallery-scaled .cv-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+}
+
+.template-gallery-scaled .cv-left-col {
+    order: 0 !important;
+    flex: none !important;
+    width: 35% !important;
+}
+
+.template-gallery-scaled .cv-right-col {
+    order: 0 !important;
+    flex: none !important;
+    width: 65% !important;
+}
+
+@media (max-width: 900px) {
+    .template-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
 /* Pada mobile, kolom CV ditumpuk vertikal sehingga tinggi mengikuti seluruh isi. */
 @media (max-width: 767px) {
     .cv-wrapper {
@@ -125,6 +265,9 @@ body {
     .app-shell {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
     }
 
     .app-layout {
@@ -132,6 +275,17 @@ body {
         max-width: none !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
+    }
+
+    main {
+        display: block !important;
+        position: static !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .cv-screen-preview {
+        zoom: 1 !important;
     }
 
     html, body {
@@ -148,7 +302,7 @@ body {
     .no-print { 
         display: none !important; 
     }
-    
+
     .cv-wrapper { 
         box-shadow: none !important; 
         margin: 0 !important;
@@ -178,11 +332,13 @@ body {
     .cv-left-col {
         width: 35% !important;
         order: initial !important;
+        padding: 2.5rem 2rem !important;
     }
 
     .cv-right-col {
         width: 65% !important;
         order: initial !important;
+        padding: 3rem 2.5rem !important;
     }
 
     [contenteditable="true"] {
