@@ -10,7 +10,7 @@ defineProps({ photoSrc: { type: String, default: null } });
     <div class="mb-6 md:mb-8">
       <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KONTAK</h3>
       <ul class="text-[12px] text-gray-700 space-y-3 leading-tight">
-        <li class="flex items-start"><Mail class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /><a href="mailto:muhamadikhsan.dev@gmail.com" class="flex-1 ml-1.5 break-all" target="_blank"><span class="cv-link-elegan" contenteditable="true">muhamadikhsan.dev@gmail.com</span></a></li>
+        <li class="flex items-start"><Mail class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /><a href="https://mail.google.com/mail/?view=cm&fs=1&to=muhamadikhsan.dev%40gmail.com" class="flex-1 ml-1.5 break-all" target="_blank"><span class="cv-link-elegan" contenteditable="true">muhamadikhsan.dev@gmail.com</span></a></li>
         <li class="flex items-center"><MapPin class="w-3.5 h-3.5 text-cv-dark shrink-0" /><span contenteditable="true" class="flex-1 ml-1.5">Kab. Bogor, Jawa Barat</span></li>
         <li class="flex items-start"><Phone class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /><a href="https://wa.me/628989379116" class="flex-1 ml-1.5" target="_blank"><span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span></a></li>
         <li class="flex items-center"><IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /><span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span></li>

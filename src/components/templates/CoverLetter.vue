@@ -113,8 +113,8 @@ const isLokerTemplate = computed(() => props.templateId.startsWith('job-'));
         <FileText class="w-9 h-9 text-cv-dark shrink-0" />
       </div>
       <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] text-gray-600">
-        <span contenteditable="true" class="flex items-center gap-1.5"><Mail class="w-3.5 h-3.5 text-cv-dark" />muhamadikhsan.dev@gmail.com</span>
-        <span contenteditable="true" class="flex items-center gap-1.5"><Phone class="w-3.5 h-3.5 text-cv-dark" />+62 898-9379-116</span>
+        <span class="flex items-center gap-1.5"><Mail class="w-3.5 h-3.5 text-cv-dark" /><a href="https://mail.google.com/mail/?view=cm&fs=1&to=muhamadikhsan.dev%40gmail.com" class="cv-link-elegan"><span contenteditable="true">muhamadikhsan.dev@gmail.com</span></a></span>
+        <span class="flex items-center gap-1.5"><Phone class="w-3.5 h-3.5 text-cv-dark" /><a href="tel:+628989379116" class="cv-link-elegan"><span contenteditable="true">+62 898-9379-116</span></a></span>
         <span contenteditable="true" class="flex items-center gap-1.5"><MapPin class="w-3.5 h-3.5 text-cv-dark" />Kab. Bogor, Jawa Barat</span>
       </div>
     </header>

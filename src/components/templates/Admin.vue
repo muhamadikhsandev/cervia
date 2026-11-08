@@ -22,7 +22,7 @@ defineProps({
         <ul class="text-[12px] text-cv-charcoal space-y-3 leading-tight">
             <li class="flex items-start">
                 <Mail class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" /> 
-                <a href="mailto:muhamadikhsan.dev@gmail.com" target="_blank" class="flex-1 ml-1.5 break-all flex flex-wrap items-center gap-1 group">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=muhamadikhsan.dev%40gmail.com" target="_blank" class="flex-1 ml-1.5 break-all flex flex-wrap items-center gap-1 group">
                     <span class="cv-link-elegan break-all" contenteditable="true">muhamadikhsan.dev@gmail.com</span>
                 </a>
             </li>
