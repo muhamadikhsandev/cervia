@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -36,22 +36,19 @@ defineProps({
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
-                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-            </li>
+            
         </ul>
     </div>
     <div>
-        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN UTAMA</h3>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN</h3>
         <ul contenteditable="true" class="text-[12.5px] text-cv-charcoal space-y-2 list-disc marker:text-cv-dark pl-4">
-            <li>Pengoperasian Mesin Kasir & Aplikasi POS</li>
-            <li>Transaksi Tunai & Non-Tunai (QRIS / EDC / Debit)</li>
-            <li>Pelayanan Pelanggan Ramah (Customer Service)</li>
-            <li>Rekonsiliasi & Perhitungan Kas Harian (Closing Kasir)</li>
-            <li>Ketelitian Perhitungan & Uang Kembalian</li>
-            <li>Penataan Display Produk & Barcode Scanning</li>
-            <li>Kedisiplinan, Kejujuran, & Tanggung Jawab</li>
+            <li>Komunikasi yang sopan dan ramah</li>
+            <li>Berhitung dasar dan teliti</li>
+            <li>Mampu menggunakan komputer dasar</li>
+            <li>Mau belajar mesin kasir dan sistem POS</li>
+            <li>Menjaga kerapian dan kebersihan</li>
+            <li>Dapat bekerja sama dan mengikuti arahan</li>
+            <li>Disiplin, jujur, dan bertanggung jawab</li>
         </ul>
     </div>
 </div>
@@ -63,17 +60,17 @@ defineProps({
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">PROFIL RINGKAS</h3>
         <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
-            Pemuda berusia 18 tahun lulusan SMK PPLG yang jujur, teliti, ramah, dan berorientasi pada kepuasan pelanggan. Memiliki pemahaman yang baik dalam pengoperasian perangkat lunak Point of Sale (POS), pencatatan transaksi kasir, serta alur pembayaran tunai maupun non-tunai (QRIS/EDC). Terbiasa dengan perhitungan matematis yang presisi, cepat beradaptasi dengan lingkungan ritel, serta siap bekerja dengan sistem shift secara profesional demi kelancaran operasional toko.
+            Lulusan SMK PPLG yang ramah, teliti, dan tertarik bekerja sebagai kasir atau pramuniaga. Belum memiliki pengalaman kerja formal, tetapi siap belajar menggunakan mesin kasir, melayani pelanggan, dan menjalankan tugas toko sesuai arahan. Disiplin, bertanggung jawab, serta bersedia bekerja dalam sistem shift.
         </div>
     </div>
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">MINAT & KESIAPAN KERJA</h3>
         <div contenteditable="true" class="text-cv-charcoal">
             <ul class="text-[13px] list-disc pl-4 space-y-2.5 marker:text-cv-dark leading-relaxed">
-                <li><strong>Pelayanan Transaksi & Kasir:</strong> Siap menyapa setiap pelanggan dengan senyum dan sopan, memindai barcode barang secara cepat, serta melayani pembayaran tunai/non-tunai dengan akurat.</li>
-                <li><strong>Ketelitian Kas & Closing Shift:</strong> Terbiasa menghitung uang kas masuk secara teliti dan mencocokkan total fisik dengan laporan rekonsiliasi pada sistem POS tanpa selisih.</li>
-                <li><strong>Pelayanan Konsumen (Service Excellence):</strong> Mampu memberikan informasi produk kepada pembeli, melayani dengan ramah dan tanggap, serta menjaga antrean kasir tetap teratur dan nyaman.</li>
-                <li><strong>Kebersihan & Kerapian Kasir:</strong> Menjaga kebersihan area meja kasir, memastikan ketersediaan kantong belanja dan kertas struk, serta siap membantu display produk saat toko senggang.</li>
+                <li><strong>Melayani Pelanggan:</strong> Siap menyapa pelanggan dengan sopan, mendengarkan kebutuhan mereka, dan meminta bantuan rekan kerja bila diperlukan.</li>
+                <li><strong>Belajar Tugas Kasir:</strong> Bersedia mempelajari penggunaan mesin kasir, pemindaian barang, serta proses pembayaran sesuai prosedur toko.</li>
+                <li><strong>Teliti dan Bertanggung Jawab:</strong> Siap memeriksa barang dan menghitung pembayaran dengan cermat, serta mengikuti prosedur yang berlaku.</li>
+                <li><strong>Membantu Operasional Toko:</strong> Bersedia menjaga kerapian area kerja, merapikan barang, dan membantu tugas lain sesuai arahan.</li>
             </ul>
         </div>
     </div>

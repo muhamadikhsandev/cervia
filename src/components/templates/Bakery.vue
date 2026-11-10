@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -36,22 +36,17 @@ defineProps({
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
-                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-            </li>
+
         </ul>
     </div>
     <div>
-        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN UTAMA</h3>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN</h3>
         <ul contenteditable="true" class="text-[12.5px] text-cv-charcoal space-y-2 list-disc marker:text-cv-dark pl-4">
-            <li>Penimbangan Bahan Presisi (Scaling Gramasi)</li>
-            <li>Higienitas & Sanitasi Dapur (Food Safety Dasar)</li>
-            <li>Kesiapan Belajar Adonan, Proofing & Baking</li>
-            <li>Stamina Fisik Prima (Terbiasa Kerja Aktif)</li>
-            <li>Pembersihan & Perawatan Loyang serta Oven</li>
-            <li>Pengepakan (Packaging) & Display Roti Segar</li>
-            <li>Disiplin Shift Subuh/Pagi & Kerja Sama Tim</li>
+            <li>Menjaga kebersihan dan kerapian</li>
+            <li>Teliti dan mau belajar</li>
+            <li>Mampu mengikuti arahan</li>
+            <li>Dapat bekerja sama dalam tim</li>
+            <li>Disiplin dan bertanggung jawab</li>
         </ul>
     </div>
 </div>
@@ -63,17 +58,17 @@ defineProps({
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">PROFIL RINGKAS</h3>
         <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
-            Pemuda berusia 18 tahun lulusan SMK PPLG yang berenergi positif, disiplin, teliti, dan memiliki motivasi besar untuk memulai karir di bidang produksi roti bakery. Walaupun belum memiliki pengalaman kerja formal di dapur roti, saya memiliki kemauan belajar yang sangat tinggi (fast learner), stamina fisik prima untuk bekerja aktif dan berdiri lama, serta terbiasa dengan perhitungan angka yang presisi. Siap dibimbing dari nol mengenai standar resep, persiapan adonan, pemantauan oven, hingga pemeliharaan kebersihan dapur demi menjaga mutu dan cita rasa produk roti.
+            Lulusan SMK PPLG yang disiplin, teliti, dan tertarik bekerja sebagai helper bakery. Belum memiliki pengalaman kerja di bidang bakery, tetapi siap belajar membantu persiapan bahan, menjaga kebersihan area kerja, dan mengikuti arahan tim.
         </div>
     </div>
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">MINAT & KESIAPAN KERJA</h3>
         <div contenteditable="true" class="text-cv-charcoal">
             <ul class="text-[13px] list-disc pl-4 space-y-2.5 marker:text-cv-dark leading-relaxed">
-                <li><strong>Kemauan Belajar dari Dasar:</strong> Sangat antusias mempelajari alur produksi roti secara menyeluruh—mulai dari penyiapan bahan (mise en place), pengadukan adonan, proses fermentasi/proofing, hingga teknik pemanggangan sesuai SOP toko.</li>
-                <li><strong>Ketelitian Takaran & Resep:</strong> Memiliki ketelitian tinggi dalam menimbang dan menakar bahan baku (tepung, ragi, mentega, gula, air) sesuai takaran gramasi agar adonan mengembang sempurna dan konsisten.</li>
-                <li><strong>Kebersihan & Sanitasi Area Dapur:</strong> Berkomitmen menerapkan standar kebersihan diri (personal hygiene), rutin mencuci dan membersihkan loyang, wadah adonan, meja kerja, serta mesin oven agar steril dan higienis.</li>
-                <li><strong>Ketahanan Fisik & Kesiapan Shift Pagi:</strong> Berstamina fisik bugar untuk mengangkat bahan baku, memindahkan rak loyang, serta terbiasa bangun pagi untuk bekerja pada shift subuh/pagi secara disiplin.</li>
+                <li><strong>Membantu Persiapan:</strong> Siap mempelajari persiapan bahan dan tugas produksi sesuai arahan.</li>
+                <li><strong>Kebersihan Area Kerja:</strong> Bersedia menjaga kebersihan peralatan dan area dapur.</li>
+                <li><strong>Kerja Sama:</strong> Siap membantu tim dan mengikuti prosedur kerja.</li>
+                <li><strong>Kesiapan Belajar:</strong> Terbuka mempelajari tugas baru dan menerima masukan.</li>
             </ul>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: { type: String, default: null },
@@ -38,7 +38,6 @@ const readiness = {
       <li class="flex gap-2"><Mail class="w-3.5 h-3.5 shrink-0" /><a href="https://mail.google.com/mail/?view=cm&fs=1&to=muhamadikhsan.dev%40gmail.com" class="cv-link-elegan"><span contenteditable="true">muhamadikhsan.dev@gmail.com</span></a></li>
       <li class="flex gap-2"><MapPin class="w-3.5 h-3.5 shrink-0" /><span contenteditable="true">Kab. Bogor, Jawa Barat</span></li>
       <li class="flex gap-2"><Phone class="w-3.5 h-3.5 shrink-0" /><a href="tel:+628989379116" class="cv-link-elegan"><span contenteditable="true">+62 898-9379-116</span></a></li>
-      <li class="flex gap-2"><IdCard class="w-3.5 h-3.5 shrink-0" /><span contenteditable="true">18 tahun · Laki-laki</span></li>
     </ul>
     <h3 class="font-bold text-cv-dark border-b-2 border-cv-dark pb-1 mb-4 text-[13px] tracking-widest">KETERAMPILAN</h3>
     <ul contenteditable="true" class="text-[12.5px] text-gray-700 space-y-2 list-disc pl-4 marker:text-cv-dark"><li v-for="skill in profile(templateId).skills" :key="skill">{{ skill }}</li></ul>

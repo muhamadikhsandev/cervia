@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -36,14 +36,11 @@ defineProps({
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
-                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-            </li>
+
         </ul>
     </div>
     <div>
-        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN UTAMA</h3>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN</h3>
         <ul contenteditable="true" class="text-[12.5px] text-cv-charcoal space-y-2 list-disc marker:text-cv-dark pl-4">
             <li>Pengoperasian Komputer & Pengetikan Rapi</li>
             <li>Dasar Microsoft Excel & Google Sheets (Tabel & Input Data)</li>

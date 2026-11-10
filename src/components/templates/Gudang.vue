@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -36,14 +36,11 @@ defineProps({
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
-                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-            </li>
+            
         </ul>
     </div>
     <div>
-        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN UTAMA</h3>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN</h3>
         <ul contenteditable="true" class="text-[12.5px] text-cv-charcoal space-y-2 list-disc marker:text-cv-dark pl-4">
             <li>Stok Opname & Audit Barang</li>
             <li>Pencatatan Inbound & Outbound</li>
@@ -63,7 +60,7 @@ defineProps({
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">PROFIL RINGKAS</h3>
         <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
-            Pemuda berusia 18 tahun lulusan SMK PPLG yang memiliki stamina fisik prima, disiplin, serta tingkat ketelitian tinggi. Mampu melakukan pengelolaan inventaris, pencatatan masuk-keluar barang (inbound/outbound), serta penyusunan laporan persediaan barang berbasis komputer (Spreadsheet/Excel). Siap bekerja keras dan bekerja dalam tim logistik gudang.
+            Lulusan SMK PPLG yang memiliki stamina fisik prima, disiplin, serta tingkat ketelitian tinggi. Mampu melakukan pengelolaan inventaris, pencatatan masuk-keluar barang (inbound/outbound), serta penyusunan laporan persediaan barang berbasis komputer (Spreadsheet/Excel). Siap bekerja keras dan bekerja dalam tim logistik gudang.
         </div>
     </div>
     <div class="mb-8 md:mb-10">

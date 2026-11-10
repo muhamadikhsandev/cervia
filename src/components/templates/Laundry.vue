@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -36,14 +36,11 @@ defineProps({
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
-                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-            </li>
+            
         </ul>
     </div>
     <div>
-        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN UTAMA</h3>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN</h3>
         <ul contenteditable="true" class="text-[12.5px] text-cv-charcoal space-y-2 list-disc marker:text-cv-dark pl-4">
             <li>Pencucian & Pemilahan Bahan Pakaian</li>
             <li>Teknik Setrika Rapi & Cepat</li>
@@ -63,7 +60,7 @@ defineProps({
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">PROFIL RINGKAS</h3>
         <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
-            Lulusan SMK PPLG berusia 18 tahun yang terbiasa bekerja rapi, rapih, teliti, serta disiplin tinggi. Memiliki minat besar untuk bekerja di operasional usaha laundry, mulai dari penerimaan barang, penimbangan, pencucian sesuai jenis kain, penyetrikaan presisi, hingga packing rapi. Siap bekerja secara penuh waktu demi menjaga kualitas kebersihan pakaian pelanggan dan citra outlet.
+            Lulusan SMK PPLG yang terbiasa bekerja rapi, rapih, teliti, serta disiplin tinggi. Memiliki minat besar untuk bekerja di operasional usaha laundry, mulai dari penerimaan barang, penimbangan, pencucian sesuai jenis kain, penyetrikaan presisi, hingga packing rapi. Siap bekerja secara penuh waktu demi menjaga kualitas kebersihan pakaian pelanggan dan citra outlet.
         </div>
     </div>
     <div class="mb-8 md:mb-10">

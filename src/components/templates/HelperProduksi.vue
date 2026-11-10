@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -36,10 +36,7 @@ defineProps({
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
-                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-            </li>
+            
         </ul>
     </div>
     <div class="mb-6 md:mb-8">
@@ -72,15 +69,15 @@ defineProps({
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">TENTANG SAYA</h3>
         <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
-            Saya <strong>Muhamad Ikhsan, 18 tahun, fresh graduate SMK</strong> yang sedang mencari kesempatan pertama untuk bekerja sebagai <strong>Helper Produksi</strong>. Saya belum memiliki pengalaman kerja formal, namun saya memiliki <strong>fisik yang sehat dan kuat, disiplin tinggi, serta kemauan besar untuk belajar</strong>. Saya siap dilatih dari nol, mengikuti semua aturan perusahaan, dan membuktikan diri melalui kerja keras serta hasil kerja yang rapi dan tepat waktu.
+            Saya <strong>Muhamad Ikhsan, lulusan SMK</strong> yang sedang mencari kesempatan pertama untuk bekerja sebagai <strong>Helper Produksi</strong>. Saya belum memiliki pengalaman kerja formal, namun saya memiliki <strong>fisik yang sehat dan kuat, disiplin tinggi, serta kemauan besar untuk belajar</strong>. Saya siap dilatih dari nol, mengikuti aturan perusahaan, dan bekerja dengan rapi serta tepat waktu.
         </div>
     </div>
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">MENGAPA MEMPEKERJAKAN SAYA?</h3>
         <div contenteditable="true" class="text-cv-charcoal">
             <ul class="text-[13px] list-disc pl-4 space-y-2.5 marker:text-cv-dark leading-relaxed">
-                <li><strong>Fisik Prima & Usia Produktif:</strong> Berusia 18 tahun dengan kondisi fisik sehat dan stamina yang baik — cocok untuk pekerjaan produksi yang membutuhkan tenaga dan ketahanan.</li>
-                <li><strong>Siap Dilatih dari Nol:</strong> Sebagai fresh graduate, saya tidak membawa kebiasaan kerja lama. Saya siap menerima arahan, mengikuti SOP, dan menyerap pelatihan dengan cepat.</li>
+                <li><strong>Fisik Prima:</strong> Memiliki kondisi fisik sehat dan stamina yang baik — cocok untuk pekerjaan produksi yang membutuhkan tenaga dan ketahanan.</li>
+                <li><strong>Siap Dilatih:</strong> Saya siap menerima arahan, mengikuti prosedur kerja, dan mempelajari tugas yang diberikan.</li>
                 <li><strong>Disiplin, Jujur & Bertanggung Jawab:</strong> Saya terbiasa disiplin waktu dari lingkungan sekolah, jujur dalam bekerja, serta bertanggung jawab terhadap tugas yang diberikan sampai selesai.</li>
                 <li><strong>Teliti & Menjaga Kualitas:</strong> Saya terbiasa mengerjakan tugas dengan rapi dan detail, sehingga cocok untuk membantu proses quality control serta packing produk agar hasil akhirnya sesuai standar.</li>
             </ul>

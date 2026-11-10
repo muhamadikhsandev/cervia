@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, User, IdCard, Sparkles, BadgeCheck } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User, Sparkles, BadgeCheck } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -33,10 +33,6 @@ defineProps({
           <Phone class="w-3.5 h-3.5 text-cv-dark mt-0.5 shrink-0" />
           <a href="https://wa.me/628989379116" class="flex-1 ml-1.5" target="_blank"><span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span></a>
         </li>
-        <li class="flex items-center">
-          <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" />
-          <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-        </li>
       </ul>
     </div>
 
@@ -66,7 +62,7 @@ defineProps({
 
     <div class="mb-8 md:mb-10">
       <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">PROFIL SINGKAT</h3>
-      <div contenteditable="true" class="text-[13px] text-gray-700 text-justify leading-relaxed">Lulusan SMK PPLG berusia 18 tahun yang ramah, disiplin, dan memiliki kemauan belajar. Mampu berkomunikasi dengan sopan, bekerja dalam tim, menjaga kebersihan area kerja, serta mengikuti instruksi dengan baik. Siap melayani pelanggan, membantu menyiapkan makanan, dan bekerja penuh waktu dengan sistem shift.</div>
+      <div contenteditable="true" class="text-[13px] text-gray-700 text-justify leading-relaxed">Lulusan SMK PPLG yang ramah, disiplin, dan memiliki kemauan belajar. Mampu berkomunikasi dengan sopan, bekerja dalam tim, menjaga kebersihan area kerja, serta mengikuti instruksi dengan baik. Siap melayani pelanggan, membantu menyiapkan makanan, dan bekerja penuh waktu dengan sistem shift.</div>
     </div>
 
     <div class="mb-8 md:mb-10">

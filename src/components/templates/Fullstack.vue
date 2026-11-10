@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User, Globe } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User, Globe } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {

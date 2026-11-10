@@ -60,7 +60,7 @@ const tabs = [
   { id: 'job-3', label: 'Staff Outlet', category: 'Lowongan 3', subcategory: 'Food & Beverages', icon: Utensils, defaultName: 'CV_Nama_Staff_Outlet_Dimsumart', component: LokerCv },
   { id: 'job-4', label: 'Operator Packing', category: 'Lowongan 4', subcategory: 'Produksi', icon: Factory, defaultName: 'CV_Nama_Operator_Packing', component: LokerCv },
   { id: 'job-5', label: 'Admin Stock Opname', category: 'Lowongan 5', subcategory: 'Administrasi Gudang', icon: Boxes, defaultName: 'CV_Nama_Admin_Stock_Opname', component: LokerCv },
-  { id: 'job-6', label: 'Crew Store', category: 'Lowongan 6', subcategory: 'Petshop', icon: Store, defaultName: 'CV_Nama_Crew_Store_Petshop', component: LokerCv },
+  { id: 'job-6', label: 'Crew Store', fileLabel: 'Crew Store Petshop', category: 'Lowongan 6', subcategory: 'Petshop', icon: Store, defaultName: 'CV_Muhamad_Ikhsan_Crew_Store_Petshop', component: LokerCv },
   { id: 'job-7', label: 'Customer Service', category: 'Lowongan 7', subcategory: 'Layanan Pelanggan', icon: Handshake, defaultName: 'CV_Nama_Customer_Service_Arasya', component: LokerCv },
   { id: 'job-8', label: 'Service Kopi', category: 'Lowongan 8', subcategory: 'Kedai Kopi', icon: Croissant, defaultName: 'CV_Nama_Service_Kopi_Satu_Tudju', component: LokerCv },
   { id: 'job-10', label: 'Casual Warehouse', category: 'Lowongan 10', subcategory: 'Gudang', icon: Boxes, defaultName: 'CV_Nama_Casual_Warehouse_Naturlife', component: LokerCv },
@@ -140,7 +140,7 @@ function switchTab(tabId) {
   activeTab.value = tabId;
   const current = tabs.find(t => t.id === tabId);
   if (current) {
-    pdfFileName.value = formatDocumentFileName(documentMode.value, current.label);
+    pdfFileName.value = formatDocumentFileName(documentMode.value, current.fileLabel || current.label);
     document.title = pdfFileName.value;
   }
 }
@@ -149,7 +149,7 @@ function switchDocumentMode(mode) {
   documentMode.value = mode;
   const current = tabs.find(t => t.id === activeTab.value);
   if (current) {
-    pdfFileName.value = formatDocumentFileName(mode, current.label);
+    pdfFileName.value = formatDocumentFileName(mode, current.fileLabel || current.label);
     document.title = pdfFileName.value;
   }
 }

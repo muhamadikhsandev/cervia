@@ -1,5 +1,5 @@
 <script setup>
-import { Mail, MapPin, Phone, IdCard, User } from 'lucide-vue-next';
+import { Mail, MapPin, Phone, User } from 'lucide-vue-next';
 
 defineProps({
   photoSrc: {
@@ -36,22 +36,16 @@ defineProps({
                     <span class="cv-link-elegan" contenteditable="true">+62 898-9379-116</span>
                 </a>
             </li>
-            <li class="flex items-center">
-                <IdCard class="w-3.5 h-3.5 text-cv-dark shrink-0" /> 
-                <span contenteditable="true" class="flex-1 ml-1.5">Usia: 18 Tahun (Laki-laki)</span>
-            </li>
         </ul>
     </div>
     <div>
-        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN UTAMA</h3>
+        <h3 class="font-lato font-bold text-cv-dark border-b-[2px] border-cv-dark pb-1 mb-4 text-[13px] tracking-widest uppercase">KETERAMPILAN</h3>
         <ul contenteditable="true" class="text-[12.5px] text-cv-charcoal space-y-2 list-disc marker:text-cv-dark pl-4">
-            <li>Pelayanan Pelanggan Ramah</li>
-            <li>Transaksi Kasir & Hitungan Teliti</li>
-            <li>Pencatatan Administrasi Sederhana</li>
-            <li>Kebersihan & Display Gerobak</li>
-            <li>Stok Opnam & Manajemen Barang</li>
-            <li>Komunikasi Baik & Sopan</li>
-            <li>Kedisiplinan & Etos Kerja Tinggi</li>
+            <li>Komunikasi yang sopan</li>
+            <li>Berhitung dasar</li>
+            <li>Menjaga kebersihan dan kerapian</li>
+            <li>Mau belajar dan mengikuti arahan</li>
+            <li>Disiplin dan bertanggung jawab</li>
         </ul>
     </div>
 </div>
@@ -63,17 +57,17 @@ defineProps({
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-3 text-[13px] tracking-widest uppercase">PROFIL RINGKAS</h3>
         <div contenteditable="true" class="text-[13px] text-cv-charcoal text-justify leading-relaxed">
-            Pemuda berusia 18 tahun lulusan SMK PPLG yang jujur, disiplin, dan komunikatif. Berdomisili di Bogor serta siap bekerja penuh waktu dengan sistem shift sore/malam. Memiliki ketertarikan tinggi di bidang operasional kuliner retail, pelayanan konsumen, serta penataan display produk. Cepat belajar, terbiasa dengan pembukuan dan perhitungan angka yang presisi, serta siap menjaga kebersihan gerobak dan melayani pelanggan dengan ramah demi mendukung pertumbuhan outlet PT Selaras Rasakoe Indonesia.
+            Lulusan SMK PPLG yang disiplin, ramah, dan tertarik bekerja di bidang pelayanan. Belum memiliki pengalaman kerja formal, tetapi siap belajar melayani pelanggan, membantu menyiapkan dagangan, dan menjaga kebersihan area kerja. Bersedia bekerja sesuai jadwal yang ditentukan.
         </div>
     </div>
     <div class="mb-8 md:mb-10">
         <h3 class="font-lato font-bold text-cv-dark border-b-[1.5px] border-gray-300 pb-1 mb-4 text-[13px] tracking-widest uppercase">MINAT & KESIAPAN KERJA</h3>
         <div contenteditable="true" class="text-cv-charcoal">
             <ul class="text-[13px] list-disc pl-4 space-y-2.5 marker:text-cv-dark leading-relaxed">
-                <li><strong>Kebersihan & Tampilan Outlet:</strong> Berkomitmen untuk selalu menjaga kebersihan fisik gerobak, peralatan, dan kerapian display barang agar terlihat higienis dan menarik minat pembeli.</li>
-                <li><strong>Pelayanan Kasir & Konsumen:</strong> Siap menyapa setiap pelanggan secara sopan, melayani transaksi penjualan tunai/non-tunai secara jujur, akurat, dan ramah.</li>
-                <li><strong>Manajemen Stok & Administrasi:</strong> Terbiasa melakukan perhitungan matematis dasar dan input data untuk mencatat pemasukan harian, sisa stok produk, serta laporan penjualan sederhana.</li>
-                <li><strong>Fleksibilitas Kerja:</strong> Siap bekerja 6 hari seminggu pada shift sore/malam dan sigap belajar operasional gerobak sesuai panduan SOP perusahaan.</li>
+                <li><strong>Melayani Pelanggan:</strong> Siap menyambut pelanggan dengan sopan dan membantu sesuai arahan.</li>
+                <li><strong>Membantu Persiapan Dagangan:</strong> Bersedia mempelajari cara menyiapkan dan menyajikan dagangan.</li>
+                <li><strong>Menjaga Kebersihan:</strong> Siap menjaga kebersihan gerobak, peralatan, dan area kerja.</li>
+                <li><strong>Kesiapan Kerja:</strong> Bersedia mempelajari tugas operasional dan mengikuti jadwal kerja yang disepakati.</li>
             </ul>
         </div>
     </div>
